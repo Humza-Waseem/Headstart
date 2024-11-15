@@ -1,29 +1,20 @@
+{%load static %}
 <!DOCTYPE html>
-{% load static%}
-{% include 'main.html'%}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} {% include 'main.html'%} {% endcomment %}
-      <!-- 
-    - primary meta tag
-  -->
-  <title>HeadStart - The Best Program to Enroll for Exchange</title>
-  <meta name="title" content="EduWeb - The Best Program to Enroll for Exchange">
-  <meta name="description" content="This is an education html template made by codewithsadee">
-    
 
-   <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFTC - Explore world's best NFT</title>
 
   <!-- 
-    - custom css link
+    - favicon
   -->
-  {% comment %} <link rel="stylesheet" href="./assets/css/style.css"> {% endcomment %}
-  {% comment %} <link rel="stylesheet" href="..assets/css/style.css"> {% endcomment %}
+  <link rel="shortcut icon" href="{% static 'favicon.svg'}" type="image/svg+xml">
+
+  
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
   <!-- 
     - google font link
@@ -31,152 +22,112 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@600;900&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-
-  <!-- 
-    - preload images
-  -->
-  {% static 'css/style.css'%}
-  <link rel="preload" as="image" href= "{% static 'images/hero-bg.svg'%}">
-  <link rel="preload" as="image" href="{% static 'images/hero-banner-1.jpg'%}">
-  <link rel="preload" as="image" href="{% static 'images/hero-banner-2.jpg'%}">
-  <link rel="preload" as="image" href="{% static 'images/hero-shape-1.svg'%}">
-  <link rel="preload" as="image" href="{% static 'images/hero-shape-2.png'%}">
-
-  {% comment %} <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
-  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png"> {% endcomment %}
-
 </head>
- 
 
 <body id="top">
-  {% include 'alerts.html'%}
 
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-  {% include 'alerts.html'%}
-
-  {% comment %} <h1> Hello {{request.user.username}}</h1>
-  <h1> Hello {{request.user.email}}</h1>  
-  <h1> Hello {{request.user.username}}</h1>
-  <h1> Hello {{request.user.email}}</h1>  
-  <h1> Hello {{request.user.username}}</h1>
-  <h1> Hello {{request.user.email}}</h1>  
-  <h1> Hello {{request.user.username}}</h1>
-  <h1> Hello {{request.user.email}}</h1>  
-  <h1> Hello {{request.user.username}}</h1>
-  <h1> Hello {{request.user.email}}</h1>   {% endcomment %}
-  
-
-    {% comment %} <a href="{% url 'UserHomePage'%}">Login</a> {% endcomment %}
-    {% comment %} <a href="{% url 'GuestHomePage'%}">GuestHomePage</a> {% endcomment %}
-
+  <!-- 
+    - #HEADER
+  -->
 
   <header class="header" data-header>
     <div class="container">
 
+      <div class="overlay" data-overlay></div>
+
       <a href="#" class="logo">
-        <img src="{% static 'images/logo.svg'%}" width="162" height="50" alt="EduWeb logo">
+        <img src="{% static 'images/logo.svg'%}" width="68" height="48" alt="NFTC Logo">
+        
       </a>
 
       <nav class="navbar" data-navbar>
 
-        <div class="wrapper">
-          <a href="#" class="logo">
-            <img src="{% static 'images/logo.svg'%}" width="162" height="50" alt="EduWeb logo">
-          </a>
+        <div class="navbar-top">
+          <p class="navbar-title">Menu</p>
 
-          <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+            <ion-icon name="close-circle-outline"></ion-icon>
           </button>
         </div>
 
         <ul class="navbar-list">
 
-          <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          <li>
+            <a href="#home" class="navbar-link" data-navlink>Home</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#about" class="navbar-link" data-nav-link>About</a>
+          <li>
+            <a href="#explore" class="navbar-link" data-navlink>Startups</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-link>Courses</a>
+          <li>
+            <a href="#top-seller" class="navbar-link" data-navlink>Match</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+          <!-- <li>
+            <a href="#collection" class="navbar-link" data-navlink>Collection</a>
+          </li> -->
+
+          
+
+          <li>
+            <a href="#" class="navbar-link" data-navlink>Contact</a>
           </li>
 
-          <li class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link>Contact</a>
+          <li>
+            <a href="#instruction" class="navbar-link" data-navlink>Pricing</a>
           </li>
 
         </ul>
 
       </nav>
 
-      <div class="header-actions">
+      <button class="menu-open-btn" aria-label="Open Menu" data-nav-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
 
-        <button class="header-action-btn" aria-label="toggle search" title="Search">
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
-        </button>
+      
+     <a href="{% url 'profile'%}" target="_blank"  class="btn" aria-labelledby="wallet">
+        <span class="profileicon"><img src="{% static 'icons/profile_icon.svg'%}" alt=""></span>
 
-        <button class="header-action-btn" aria-label="cart" title="Cart">
-          <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-
-          <span class="btn-badge">0</span>
-        </button>
-
-        {% comment %} <a href="#" class="btn has-before">
-          <span class="span">Try for free</span>
-
-          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-        </a>
-          {% endcomment %}
+        <span id="wallet">Profile</span>
+      </a>
+      <!-- {% if user.is_authenticated %}
+       <button class="btn-main btn-logout">
         
-          {% if user.is_authenticated %}
-          <button class="btn-main btn-logout">
-            
-            <li class="nav-item">
-              <div class="button"><a class="nav-link " href="{% url 'UserLogout'%}">Logout</a>
-               <span class="button-border"></span>
-              </div>
-            </li>        
-          </button>          
-          {% else %}
-          <button class="btn-main btn-login">
-            
-              <li class="nav-item">
-                <div class="button"><a class="nav-link" href="{% url 'UserLogin'%}">Login</a>
-                 <span class="button-border"></span>
-                </div>
-              </li>
-          </button>
-          {% endif %}
-         
+        <li class="nav-item">
+          <div class="button"><a class="nav-link " href="{% url 'UserLogout'%}">Logout</a>
+           <span class="button-border"></span>
+          </div>
+        </li>        
+      </button>  
+      
+    
+
+      {% else %}
+      <button class="btn-main btn-login">
+        
+          <li class="nav-item">
+            <div class="button"><a class="nav-link" href="{% url 'UserLogin'%}">Login</a>
+             <span class="button-border"></span>
+            </div>
+          </li>
+      </button>
+      {% endif %}  -->
 
 
 
 
-        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
-          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-        </button>
 
-      </div>
 
-      <div class="overlay" data-nav-toggler data-overlay></div>
+
+
 
     </div>
   </header>
+
 
 
 
@@ -188,150 +139,472 @@
         - #HERO
       -->
 
-      <section class="section hero has-bg-image" id="home" aria-label="home"
-        style="background-image: url('{% static 'images/hero-bg.svg'%}')">
+      <section class="hero" id="home">
+
         <div class="container">
 
-          <div class="hero-content">
+          <p class="section-subtitle">HeadStart</p>
 
-            <h1 class="h1 section-title">
-              The Best Program to <span class="span">Enroll</span> for Exchange
-            </h1>
+          <h2 class="h1 hero-title">Discover, collect, and sell extraordinary NFTs</h2>
 
-            <p class="hero-text">
-              Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.
-            </p>
+          <p class="hero-text">
+            Explore on the world's best & largest NFT marketplace
+          </p>
 
-            <a href="#" class="btn has-before">
-              <span class="span">Get Started</span>
+          <div class="btn-group">
+
+            <button class="btn">
+              <ion-icon name="rocket-outline" aria-hidden="true"></ion-icon>
+
+              <span>Explore</span>
+            </button>
+
+            <button class="btn">
+              <ion-icon name="create-outline" aria-hidden="true"></ion-icon>
+
+              <span>Plan & Pricing</span>
+            </button>
+
+          </div>
+
+        </div>
+
+        <svg class="hero-bg-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 465" version="1.1">
+          <defs>
+            <linearGradient x1="49.7965246%" y1="28.2355058%" x2="49.7778147%" y2="98.4657689%" id="linearGradient-1">
+              <stop stop-color="rgba(69,40,220, 0.15)" offset="0%"></stop>
+              <stop stop-color="rgba(87,4,138, 0.15)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <polygon points="" fill="url(#linearGradient-1)">
+              <animate id="graph-animation" xmlns="http://www.w3.org/2000/svg" dur="2s" repeatCount=""
+                attributeName="points"
+                values="0,464 0,464 111.6,464 282.5,464 457.4,464 613.4,464 762.3,464 912.3,464 1068.2,464 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,323.3 282.5,373 457.4,423.8 613.4,464 762.3,464 912.3,464 1068.2,464 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,336.6 457.4,363.5 613.4,414.4 762.3,464 912.3,464 1068.2,464 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,323.3 613.4,340 762.3,425.6 912.3,464 1068.2,464 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,290.4 762.3,368 912.3,446.4 1068.2,464 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,329.6 912.3,420 1068.2,427.6 1191.2,464 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,402.4 1068.2,373 1191.2,412 1328.1,464 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,376 1068.2,336.6 1191.2,334 1328.1,404 1440.1,464 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,376 1068.2,282 1191.2,282 1328.1,314 1440.1,372.8 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,376 1068.2,282 1191.2,204 1328.1,254 1440.1,236 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,376 1068.2,282 1191.2,204 1328.1,164 1440.1,144.79999999999998 1440.1,464 0,464; 0,464 0,367 111.6,263 282.5,282 457.4,263 613.4,216 762.3,272 912.3,376 1068.2,282 1191.2,204 1328.1,164 1440.1,8 1440.1,464 0,464;"
+                fill="freeze"></animate>
+            </polygon>
+          </g>
+        </svg>
+
+      </section>
+
+
+
+
+
+      <!-- 
+        - #EXPLORE
+      -->
+
+      <section class="section explore" id="explore">
+        <div class="container">
+
+          <p class="section-subtitle">Exclusive Assets</p>
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Explore</h2>
+
+            <a href="#" class="btn-link">
+              <span>Explore All</span>
 
               <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
             </a>
-
           </div>
 
-          <figure class="hero-banner">
-
-            <div class="img-holder one" style="--width: 270; --height: 300;">
-              <img src={% static 'images/hero-banner-1.jpg'%} width="270" height="300" alt="hero banner" class="img-cover">
-            </div>
-
-            <div class="img-holder two" style="--width: 240; --height: 370;">
-              <img src="{% static 'images/hero-banner-2.jpg'%}" width="240" height="370" alt="hero banner" class="img-cover">
-            </div>
-
-            <img src= {% static 'images/hero-shape-1.svg'%} width="380" height="190" alt="" class="shape hero-shape-1">
-
-            <img src= {% static 'images/hero-shape-2.png'%} width="622" height="551" alt="" class="shape hero-shape-2">
-
-          </figure>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #CATEGORY
-      -->
-
-      <section class="section category" aria-label="category">
-        <div class="container">
-
-          <p class="section-subtitle">Categories</p>
-
-          <h2 class="h2 section-title">
-            Online <span class="span">Classes</span> For Remote Learning.
-          </h2>
-
-          <p class="section-text">
-            Consectetur adipiscing elit sed do eiusmod tempor.
-          </p>
-
           <ul class="grid-list">
 
             <li>
-              <div class="category-card" style="--color: 170, 75%, 41%">
+              <div class="card explore-card">
 
-                <div class="card-icon">
-                  <img src= {% static 'images/category-1.svg'%} width="40" height="40" loading="lazy"
-                    alt="Online Degree Programs" class="img">
-                </div>
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="{% static 'images/auction-1.jpg'%}" width="600" height="600" loading="lazy"
+                      alt="Walking On Air" class="img-cover">
+                  </a>
+                </figure>
 
-                <h3 class="h3">
-                  <a href="#" class="card-title">Online Degree Programs</a>
+                <h3 class="h3 card-title">
+                  <a href="#">Walking On Air</a>
                 </h3>
 
-                <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
-                </p>
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Richard</a>
+                </span>
 
-                <span class="card-badge">7 Courses</span>
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.5">1.5 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
 
               </div>
             </li>
 
             <li>
-              <div class="category-card" style="--color: 351, 83%, 61%">
+              <div class="card explore-card">
 
-                <div class="card-icon">
-                  <img src= {% static 'images/category-2.svg'%} width="40" height="40" loading="lazy"
-                    alt="Non-Degree Programs" class="img">
-                </div>
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src=" {% static 'images/auction-2.jpg '%} " width="600" height="600" loading="lazy" alt="Domain Names"
+                      class="img-cover">
+                  </a>
+                </figure>
 
-                <h3 class="h3">
-                  <a href="#" class="card-title">Non-Degree Programs</a>
+                <h3 class="h3 card-title">
+                  <a href="#">Domain Names</a>
                 </h3>
 
-                <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
-                </p>
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">John Deo</a>
+                </span>
 
-                <span class="card-badge">4 Courses</span>
+                <div class="wrapper">
+                  <data class="wrapper-item" value="2.7">2.7 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
 
               </div>
             </li>
 
             <li>
-              <div class="category-card" style="--color: 229, 75%, 58%">
+              <div class="card explore-card">
 
-                <div class="card-icon">
-                  <img src={% static 'images/category-3.svg'%} width="40" height="40" loading="lazy"
-                    alt="Off-Campus Programs" class="img">
-                </div>
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src= "{% static 'images/auction-3.jpg'%}"  width="600" height="600" loading="lazy" alt="Trading Cards"
+                      class="img-cover">
+                  </a>
+                </figure>
 
-                <h3 class="h3">
-                  <a href="#" class="card-title">Off-Campus Programs</a>
+                <h3 class="h3 card-title">
+                  <a href="#">Trading Cards</a>
                 </h3>
 
-                <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
-                </p>
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Arham</a>
+                </span>
 
-                <span class="card-badge">8 Courses</span>
+                <div class="wrapper">
+                  <data class="wrapper-item" value="2.3">2.3 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
 
               </div>
             </li>
 
             <li>
-              <div class="category-card" style="--color: 42, 94%, 55%">
+              <div class="card explore-card">
 
-                <div class="card-icon">
-                  <img src={% static 'images/category-4.svg'%} width="40" height="40" loading="lazy"
-                    alt="Hybrid Distance Programs" class="img">
-                </div>
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="{% static 'images/auction-4.jpg'%}"   width="600" height="600" loading="lazy"
+                      alt="Industrial Revolution" class="img-cover">
+                  </a>
+                </figure>
 
-                <h3 class="h3">
-                  <a href="#" class="card-title">Hybrid Distance Programs</a>
+                <h3 class="h3 card-title">
+                  <a href="#">Industrial Revolution</a>
                 </h3>
 
-                <p class="card-text">
-                  Lorem ipsum dolor consec tur elit adicing sed umod tempor.
-                </p>
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Yasmin</a>
+                </span>
 
-                <span class="card-badge">8 Courses</span>
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.8">1.8 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-5.jpg" width="600" height="600" loading="lazy" alt="Utility"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Utility</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Junaid</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.7">1.7 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-6.jpg" width="600" height="600" loading="lazy" alt="Sports"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Sports</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">ArtNox</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.7">1.7 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-7.jpg" width="600" height="600" loading="lazy"
+                      alt="Cartoon Heroes" class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Cartoon Heroes</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Junaid</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="3.2">3.2 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-8.jpg" width="600" height="600" loading="lazy" alt="Gaming Chair"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Gaming Chair</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Johnson</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="0.69">0.69 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-9.jpg" width="600" height="600" loading="lazy" alt="Utility"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Utility</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Junaid</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.7">1.7 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-10.jpg" width="600" height="600" loading="lazy" alt="Sports"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Sports</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">ArtNox</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="1.7">1.7 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-11.jpg" width="600" height="600" loading="lazy"
+                      alt="Cartoon Heroes" class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Cartoon Heroes</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Junaid</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="3.2">3.2 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card explore-card">
+
+                <figure class="card-banner">
+                  <a href="#">
+                    <img src="./assets/images/auction-12.jpg" width="600" height="600" loading="lazy" alt="Gaming Chair"
+                      class="img-cover">
+                  </a>
+                </figure>
+
+                <h3 class="h3 card-title">
+                  <a href="#">Gaming Chair</a>
+                </h3>
+
+                <span class="card-author">
+                  Owned By <a href="#" class="author-link">Johnson</a>
+                </span>
+
+                <div class="wrapper">
+                  <data class="wrapper-item" value="0.69">0.69 ETH</data>
+
+                  <span class="wrapper-item">1 of 1</span>
+                </div>
+
+                <button class="btn">
+                  <ion-icon name="bag-add-outline" aria-hidden="true"></ion-icon>
+
+                  <span>Place a Bid</span>
+                </button>
 
               </div>
             </li>
@@ -346,357 +619,318 @@
 
 
       <!-- 
-        - #ABOUT
+        - #TOP SELLER
       -->
 
-      <section class="section about" id="about" aria-label="about">
+      <section class="section top-seller" id="top-seller">
         <div class="container">
 
-          <figure class="about-banner">
+          <p class="section-subtitle">Creative Artist</p>
 
-            <div class="img-holder" style="--width: 520; --height: 370;">
-              <img src=".{% static 'images/about-banner.jpg'%}" width="520" height="370" loading="lazy" alt="about banner"
-                class="img-cover">
-            </div>
+          <h2 class="h2 section-title">Top Sellers</h2>
 
-            <img src= {% static 'images/about-shape-1.svg'%} width="360" height="420" loading="lazy" alt=""
-              class="shape about-shape-1">
+          <ul class="grid-list">
 
-            <img src= {% static 'images/about-shape-2.svg'%} width="371" height="220" loading="lazy" alt=""
-              class="shape about-shape-2">
+            <li>
+              <div class="card top-seller-card">
 
-            <img src={% static 'images/about-shape-3.png'%} width="722" height="528" loading="lazy" alt=""
-              class="shape about-shape-3">
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-1.jpg" width="64" height="64" loading="lazy" alt="Richard">
+                  </a>
+                </figure>
 
-          </figure>
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@Richard</a>
+                  </h3>
 
-          <div class="about-content">
+                  <data value="1.5">1.5 BNB</data>
+                </div>
 
-            <p class="section-subtitle">About Us</p>
+              </div>
+            </li>
 
-            <h2 class="h2 section-title">
-              Over 10 Years in <span class="span">Distant learning</span> for Skill Development
-            </h2>
+            <li>
+              <div class="card top-seller-card">
 
-            <p class="section-text">
-              Lorem ipsum dolor sit amet consectur adipiscing elit sed eiusmod ex tempor incididunt labore dolore magna
-              aliquaenim ad
-              minim.
-            </p>
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-2.jpg" width="64" height="64" loading="lazy" alt="John Deo">
+                  </a>
+                </figure>
 
-            <ul class="about-list">
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@JohnDeo</a>
+                  </h3>
 
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+                  <data value="2.3">2.3 BNB</data>
+                </div>
 
-                <span class="span">Expert Trainers</span>
-              </li>
+              </div>
+            </li>
 
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+            <li>
+              <div class="card top-seller-card">
 
-                <span class="span">Online Remote Learning</span>
-              </li>
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-3.jpg" width="64" height="64" loading="lazy" alt="Junaid">
+                  </a>
+                </figure>
 
-              <li class="about-item">
-                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@Junaid</a>
+                  </h3>
 
-                <span class="span">Lifetime Access</span>
-              </li>
+                  <data value="2.5">2.5 BNB</data>
+                </div>
 
-            </ul>
+              </div>
+            </li>
 
-            <img src= {% static 'images/about-shape-4.svg'%} width="100" height="100" loading="lazy" alt=""
-              class="shape about-shape-4">
+            <li>
+              <div class="card top-seller-card">
 
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-4.jpg" width="64" height="64" loading="lazy" alt="Yasmin">
+                  </a>
+                </figure>
+
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@Yasmin</a>
+                  </h3>
+
+                  <data value="1.9">1.9 BNB</data>
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card top-seller-card">
+
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-5.jpg" width="64" height="64" loading="lazy" alt="Arham H">
+                  </a>
+                </figure>
+
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@ArhamH</a>
+                  </h3>
+
+                  <data value="3.2">3.2 BNB</data>
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="card top-seller-card">
+
+                <figure class="card-avatar">
+                  <a href="#">
+                    <img src="./assets/images/avatar-6.jpg" width="64" height="64" loading="lazy" alt="Sara">
+                  </a>
+                </figure>
+
+                <div>
+                  <h3 class="card-title">
+                    <a href="#">@Sara</a>
+                  </h3>
+
+                  <data value="4.7">4.7 BNB</data>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #COLLECTION
+      -->
+
+      <section class="section collection" id="collection">
+        <div class="container">
+
+          <p class="section-subtitle">Most Popular</p>
+
+          <div class="title-wrapper">
+            <h2 class="h2 section-title">Popular Collections</h2>
+
+            <a href="#" class="btn-link">
+              <span>View All</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </a>
           </div>
 
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #COURSE
-      -->
-
-      <section class="section course" id="courses" aria-label="course">
-        <div class="container">
-
-          <p class="section-subtitle">Popular Courses</p>
-
-          <h2 class="h2 section-title">Pick A Course To Get Started</h2>
-
           <ul class="grid-list">
 
             <li>
-              <div class="course-card">
+              <a href="#" class="card collection-card">
 
-                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src=  {% static 'images/course-1.jpg'%} width="370" height="220" loading="lazy"
-                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-1.jpg" width="600" height="450" loading-="lazy"
+                    alt="Virtual Worlds" class="img-cover">
                 </figure>
 
-                <div class="abs-badge">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-
-                  <span class="span">3 Weeks</span>
-                </div>
-
-                <div class="card-content">
-
-                  <span class="badge">Beginner</span>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Build Responsive Real- World Websites with HTML and CSS</a>
-                  </h3>
-
-                  <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(5.0/7 Rating)</p>
-
-                  </div>
-
-                  <data class="price" value="29">$29.00</data>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">8 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">20 Students</span>
-                    </li>
-
-                  </ul>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="course-card">
-
-                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src= {% static 'images/course-2.jpg'%} width="370" height="220" loading="lazy"
-                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-1.jpg" width="64" height="64" loading="lazy" alt="card avatar">
                 </figure>
 
-                <div class="abs-badge">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                <h3 class="h3 card-title">Virtual Worlds</h3>
 
-                  <span class="span">8 Weeks</span>
-                </div>
+                <span class="card-text">ERC-729</span>
 
-                <div class="card-content">
-
-                  <span class="badge">Advanced</span>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Java Programming Masterclass for Software Developers</a>
-                  </h3>
-
-                  <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(4.5 /9 Rating)</p>
-
-                  </div>
-
-                  <data class="price" value="49">$49.00</data>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">15 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">35 Students</span>
-                    </li>
-
-                  </ul>
-
-                </div>
-
-              </div>
+              </a>
             </li>
 
             <li>
-              <div class="course-card">
+              <a href="#" class="card collection-card">
 
-                <figure class="card-banner img-holder"  style="--width: 370; --height: 220;">
-                  <img src= {% static 'images/course-3.jpg'%} width="370" height="220" loading="lazy"
-                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-2.jpg" width="600" height="450" loading-="lazy"
+                    alt="Digital Arts" class="img-cover">
                 </figure>
 
-                <div class="abs-badge">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-2.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
 
-                  <span class="span">3 Weeks</span>
-                </div>
+                <h3 class="h3 card-title">Digital Arts</h3>
 
-                <div class="card-content">
+                <span class="card-text">ERC-522</span>
 
-                  <span class="badge">Intermediate</span>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">The Complete Camtasia Course for Content Creators</a>
-                  </h3>
-
-                  <div class="wrapper">
-
-                    <div class="rating-wrapper">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <p class="rating-text">(4.9 /7 Rating)</p>
-
-                  </div>
-
-                  <data class="price" value="35">$35.00</data>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">13 Lessons</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">18 Students</span>
-                    </li>
-
-                  </ul>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn has-before">
-            <span class="span">Browse more courses</span>
-
-            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-          </a>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #VIDEO
-      -->
-
-      <section class="video has-bg-image" aria-label="video"
-         style="background-image: url({% static 'images/video-bg.png' %});">
-        <div class="container">
-
-
-          <div class="video-card">
-
-            <div class="video-banner img-holder has-after" style="--width: ; --height: ;">
-              <img src={% static 'images/video-banner.jpg' %} width="970" height="550" loading="lazy" alt="video banner"
-                class="img-cover">
-
-              <button class="play-btn" aria-label="play video">
-                <ion-icon name="play" aria-hidden="true"></ion-icon>
-              </button>
-            </div>
-
-            <img src={%static 'images/video-shape-1.png'%} width="1089" height="605" loading="lazy" alt=""
-              class="shape video-shape-1">
-
-            <img src={%static 'images/video-shape-2.png'%}width="158" height="174" loading="lazy" alt=""
-              class="shape video-shape-2">
-
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #STATE
-      -->
-
-      <section class="section stats" aria-label="stats">
-        <div class="container">
-
-          <ul class="grid-list">
-
-            <li>
-              <div class="stats-card" style="--color: 170, 75%, 41%">
-                <h3 class="card-title">29.3k</h3>
-
-                <p class="card-text">Student Enrolled</p>
-              </div>
+              </a>
             </li>
 
             <li>
-              <div class="stats-card" style="--color: 351, 83%, 61%">
-                <h3 class="card-title">32.4K</h3>
+              <a href="#" class="card collection-card">
 
-                <p class="card-text">Class Completed</p>
-              </div>
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-3.jpg" width="600" height="450" loading-="lazy" alt="Sports"
+                    class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-3.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Sports</h3>
+
+                <span class="card-text">ERC-495</span>
+
+              </a>
             </li>
 
             <li>
-              <div class="stats-card" style="--color: 260, 100%, 67%">
-                <h3 class="card-title">100%</h3>
+              <a href="#" class="card collection-card">
 
-                <p class="card-text">Satisfaction Rate</p>
-              </div>
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-4.jpg" width="600" height="450" loading-="lazy"
+                    alt="Photography" class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-4.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Photography</h3>
+
+                <span class="card-text">ERC-873</span>
+
+              </a>
             </li>
 
             <li>
-              <div class="stats-card" style="--color: 42, 94%, 55%">
-                <h3 class="card-title">354+</h3>
+              <a href="#" class="card collection-card">
 
-                <p class="card-text">Top Instructors</p>
-              </div>
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-5.jpg" width="600" height="450" loading-="lazy"
+                    alt="Collectibles" class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-5.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Collectibles</h3>
+
+                <span class="card-text">ERC-972</span>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="card collection-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-6.jpg" width="600" height="450" loading-="lazy"
+                    alt="Trading Cards" class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-6.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Trading Cards</h3>
+
+                <span class="card-text">ERC-397</span>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="card collection-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-7.jpg" width="600" height="450" loading-="lazy"
+                    alt="Walking On Air" class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-7.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Walking On Air</h3>
+
+                <span class="card-text">ERC-403</span>
+
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="card collection-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/author-banner-8.jpg" width="600" height="450" loading-="lazy"
+                    alt="Domain Names" class="img-cover">
+                </figure>
+
+                <figure class="card-avatar">
+                  <img src="./assets/images/avatar-8.jpg" width="64" height="64" loading="lazy" alt="card avatar">
+                </figure>
+
+                <h3 class="h3 card-title">Domain Names</h3>
+
+                <span class="card-text">ERC-687</span>
+
+              </a>
             </li>
 
           </ul>
@@ -709,158 +943,82 @@
 
 
       <!-- 
-        - #BLOG
+        - #INSTRUCTION
       -->
 
-      <section class="section blog has-bg-image" id="blog" aria-label="blog"
-        style="background-image: url('{% static 'images/blog-bg.svg'%}')">
+      <section class="section instruction" id="instruction">
         <div class="container">
 
-          <p class="section-subtitle">Latest Articles</p>
+          <p class="section-subtitle">How It Works</p>
 
-          <h2 class="h2 section-title">Get News With Eduweb</h2>
+          <h2 class="h2 section-title">Create and sell your NFTs</h2>
 
           <ul class="grid-list">
 
-            <li>
-              <div class="blog-card">
+            <li class="instruction-item">
 
-                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
-                  <img src="{% static 'images/blog-1.jpg'%}" width="370" height="370" loading="lazy"
-                    alt="Become A Better Blogger: Content Planning" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-btn" aria-label="read more">
-                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                  </a>
-
-                  <a href="#" class="card-subtitle">Online</a>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
-                  </h3>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Oct 10, 2021</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Com 09</span>
-                    </li>
-
-                  </ul>
-
-                  <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                  </p>
-
-                </div>
-
+              <div class="instruction-icon">
+                <ion-icon name="wallet-outline"></ion-icon>
               </div>
+
+              <h3 class="instruction-title">Set up your wallet</h3>
+
+              <p class="instruction-text">
+                Once you’ve set up your wallet of choice, connect it to OpenSea by clicking the NFT Marketplace in the
+                top right corner.
+                Learn about the wallets we support.
+              </p>
+
             </li>
 
-            <li>
-              <div class="blog-card">
+            <li class="instruction-item">
 
-                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
-                  <img src="{% static 'images/blog-2.jpg'%}" width="370" height="370" loading="lazy"
-                    alt="Become A Better Blogger: Content Planning" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-btn" aria-label="read more">
-                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                  </a>
-
-                  <a href="#" class="card-subtitle">Online</a>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
-                  </h3>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Oct 10, 2021</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Com 09</span>
-                    </li>
-
-                  </ul>
-
-                  <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                  </p>
-
-                </div>
-
+              <div class="instruction-icon">
+                <ion-icon name="grid-outline"></ion-icon>
               </div>
+
+              <h3 class="instruction-title">Create your collection</h3>
+
+              <p class="instruction-text">
+                Click Create and set up your collection. Add social links, a description, profile & banner images, and
+                set a secondary
+                sales fee.
+              </p>
+
             </li>
 
-            <li>
-              <div class="blog-card">
+            <li class="instruction-item">
 
-                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
-                  <img src="{% static 'images/blog-3.jpg'%}" width="370" height="370" loading="lazy"
-                    alt="Become A Better Blogger: Content Planning" class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <a href="#" class="card-btn" aria-label="read more">
-                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-                  </a>
-
-                  <a href="#" class="card-subtitle">Online</a>
-
-                  <h3 class="h3">
-                    <a href="#" class="card-title">Become A Better Blogger: Content Planning</a>
-                  </h3>
-
-                  <ul class="card-meta-list">
-
-                    <li class="card-meta-item">
-                      <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Oct 10, 2021</span>
-                    </li>
-
-                    <li class="card-meta-item">
-                      <ion-icon name="chatbubbles-outline" aria-hidden="true"></ion-icon>
-
-                      <span class="span">Com 09</span>
-                    </li>
-
-                  </ul>
-
-                  <p class="card-text">
-                    Lorem Ipsum Dolor Sit Amet Cons Tetur Adipisicing Sed.
-                  </p>
-
-                </div>
-
+              <div class="instruction-icon">
+                <ion-icon name="file-tray-outline"></ion-icon>
               </div>
+
+              <h3 class="instruction-title">Add your NFTs</h3>
+
+              <p class="instruction-text">
+                Upload your work (image, video, audio, or 3D art), add a title and description, and customize your NFTs
+                with properties,
+                stats, and unlockable content.
+              </p>
+
+            </li>
+
+            <li class="instruction-item">
+
+              <div class="instruction-icon">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+              </div>
+
+              <h3 class="instruction-title">List them for sale</h3>
+
+              <p class="instruction-text">
+                Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to
+                sell your NFTs!
+              </p>
+
             </li>
 
           </ul>
-
-          <img src="{% static 'images/blog-shape.png'%}" width="186" height="186" loading="lazy" alt=""
-            class="shape blog-shape">
 
         </div>
       </section>
@@ -876,152 +1034,48 @@
     - #FOOTER
   -->
 
-  <footer class="footer" style="background-image: url('{% static 'images/footer-bg.png'%}')">
+  <footer class="footer">
+    <div class="container">
 
-    <div class="footer-top section">
-      <div class="container grid-list">
+      <div class="footer-top">
 
         <div class="footer-brand">
 
           <a href="#" class="logo">
-            <img src={% static 'images/logo-light.svg'%} width="162" height="50" alt="EduWeb logo">
+            <img src="./assets/images/logo.svg" width="68" height="48" alt="NFTC Logo">
           </a>
 
-          <p class="footer-brand-text">
-            Lorem ipsum dolor amet consecto adi pisicing elit sed eiusm tempor incidid unt labore dolore.
+          <p class="footer-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis non, fugit totam vel laboriosam vitae.
           </p>
-
-          <div class="wrapper">
-            <span class="span">Add:</span>
-
-            <address class="address">70-80 Upper St Norwich NR2</address>
-          </div>
-
-          <div class="wrapper">
-            <span class="span">Call:</span>
-
-            <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
-          </div>
-
-          <div class="wrapper">
-            <span class="span">Email:</span>
-
-            <a href="mailto:info@eduweb.com" class="footer-link">info@eduweb.com</a>
-          </div>
-
-        </div>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Online Platform</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">About</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Courses</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Instructor</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Events</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Instructor Profile</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Purchase Guide</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-list">
-
-          <li>
-            <p class="footer-list-title">Links</p>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Contact Us</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Gallery</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">News & Articles</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">FAQ's</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Sign In/Registration</a>
-          </li>
-
-          <li>
-            <a href="#" class="footer-link">Coming Soon</a>
-          </li>
-
-        </ul>
-
-        <div class="footer-list">
-
-          <p class="footer-list-title">Contacts</p>
-
-          <p class="footer-list-text">
-            Enter your email address to register to our newsletter subscription
-          </p>
-
-          <form action="" class="newsletter-form">
-            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
-
-            <button type="submit" class="btn has-before">
-              <span class="span">Subscribe</span>
-
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </button>
-          </form>
 
           <ul class="social-list">
 
             <li>
               <a href="#" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
+                <ion-icon name="logo-facebook"></ion-icon>
               </a>
             </li>
 
             <li>
               <a href="#" class="social-link">
                 <ion-icon name="logo-twitter"></ion-icon>
+                <ion-icon name="logo-twitter"></ion-icon>
               </a>
             </li>
 
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
+                <ion-icon name="logo-pinterest"></ion-icon>
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-discord"></ion-icon>
+                <ion-icon name="logo-discord"></ion-icon>
               </a>
             </li>
 
@@ -1029,19 +1083,85 @@
 
         </div>
 
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Useful Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">All NFTs</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">How It Works</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Create</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Explore</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Privacy & Terms</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Community</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Help Center</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Partners</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Suggestions</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Newsletter</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Subscribe Us</p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email" placeholder="info@yourmail.com" required class="newsletter-input">
+
+            <button type="submit" class="newsletter-btn" aria-label="Submit">
+              <ion-icon name="paper-plane-outline"></ion-icon>
+            </button>
+          </form>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <div class="container">
-
+      <div class="footer-bottom">
         <p class="copyright">
-          Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">Hamza Waseem</a>
+          &copy; 2022 <a href="#" class="copyright-link">codewithsadee</a>. All Rights Reserved
         </p>
-
       </div>
-    </div>
 
+    </div>
   </footer>
 
 
@@ -1052,8 +1172,8 @@
     - #BACK TO TOP
   -->
 
-  <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
-    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  <a href="#top" class="back-to-top" aria-label="Back to Top" data-back-top-btn>
+    <ion-icon name="arrow-up-outline"></ion-icon>
   </a>
 
 
@@ -1063,13 +1183,14 @@
   <!-- 
     - custom js link
   -->
-  <script src="{% static 'javascript/script.js'%}" defer></script>
+  <script src="{% static 'javascript/script.js'%}"></script>
 
   <!-- 
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  
+
 </body>
+
 </html>

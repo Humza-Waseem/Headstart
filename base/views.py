@@ -15,7 +15,8 @@ from django.contrib.auth.decorators import login_required
 # def UserHomePage(request):
 #     return render(request, 'base/UserHomePage.html')
 
-
+def profile(request):
+    return render(request, 'base/profile.html')
 def student_profile(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
