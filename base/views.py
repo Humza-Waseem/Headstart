@@ -5,8 +5,8 @@ from .ai_module import get_career_recommendations, validate_startup_idea
 from django.contrib.auth.decorators import login_required
 
 
-# def homepage(request):
-#    return render(request, 'base/homepage.html')
+def homepage(request):
+   return render(request, 'base/UserHomePage.html')
 
 # def GuestHomePage(request):
 #     return render(request, 'base/GuestHomePage.html')
@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 # @login_required
 # def UserHomePage(request):
 #     return render(request, 'base/UserHomePage.html')
+
+def Developers(request):
+    return render(request, 'Developers.html')
 
 def profile(request):
     return render(request, 'base/profile.html')

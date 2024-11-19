@@ -79,6 +79,38 @@
   text-decoration: underline;
 }
 
+
+  /* ----------------------  FAQ section ------------------ */
+
+
+ 
+    
+      .faq-container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+      .faq-answer {
+        display: none;
+        margin-bottom: 20px;
+      }
+      .plus-icon {
+        font-size: 16px;}
+
+
+
+
+
+
+
+
+
 /*-----------------------------------*\
   #style.css
 \*-----------------------------------*/
@@ -747,7 +779,7 @@ body {
   position: fixed;
   bottom: 0;
   right: 15px;
-  background-color: var(--xiketic);
+  background-color: var(--han-purple);
   color: var(--cultured);
   font-size: 2rem;
   padding: 15px 12px;

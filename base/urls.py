@@ -7,7 +7,7 @@ from . import views
 from Auth import views as user_views    
 urlpatterns = [
     
-    path('', user_views.homepage, name='homepage'), 
+    path('', views.homepage, name='HomePage'), 
     path('profile/', views.profile, name='profile'), 
 
 
@@ -16,7 +16,9 @@ urlpatterns = [
     path('register/' , user_views.registerUser,name = 'UserRegisteration'),
 
    
+    path('Developers/', views.Developers, name='Developers'),  
     path('guest/', user_views.GuestHomePage, name='GuestHomePage'),  
+    
     path('student/', views.student_profile, name='student_profile'),
     path('career_recommendations/<int:student_id>/', views.career_recommendations, name='career_recommendations'),
     path('startup/', views.startup_idea, name='startup_idea'),
