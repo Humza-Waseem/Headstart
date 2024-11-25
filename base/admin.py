@@ -1,8 +1,11 @@
 from django.contrib import admin
 
-from .models import Student, CareerRecommendation, StartupIdea
-
 # Register your models here.
-admin.site.register(Student)
-admin.site.register(CareerRecommendation)
-admin.site.register(StartupIdea)
+from .models import Room,Topic,Message,User,Bookmark # here we import the Room class from models.py
+
+admin.site.register(Room)  # here we have registered the Room class with the admin site so we can see it in the admin page
+admin.site.register(Topic)
+admin.site.register(Message)
+
+admin.site.register(User)# the custom user model we created in the models.py file
+admin.site.register(Bookmark)# the custom user model we created in the models.py file

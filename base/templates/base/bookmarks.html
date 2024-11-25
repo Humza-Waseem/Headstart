@@ -1,0 +1,54 @@
+
+
+{% load static%}
+{% include 'main.html'%}
+{% block content%}
+
+
+
+
+
+
+
+
+
+<div class="roomListRoom__meta">
+        
+    <div class="bookmark-heading-main">
+      <h1>Your Bookmarks</h1>
+    </div>    
+        {% if bookmarks %}
+        <ul>
+            {% for bookmark in bookmarks %}
+                <li>
+                    {% comment %} <a href="{% url 'room' bookmark.room.id %}">{{ bookmark.room.name }}</a>
+                    <a href="{% url 'remove_bookmark' room_id=bookmark.room.id %}">
+                        <button class="btn-remove">Remove Bookmark</button>
+                    </a> {% endcomment %}
+                    <a href="{% url 'room' bookmark.room.id %}">{{ bookmark.room.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no bookmarked rooms.</p>
+    {% endif %} {% comment %} getting the count of the participants in the room as it is a many to many field {% endcomment %}
+    </a>
+    <p class="roomListRoom__topic">{{room.topic.name}}</p>   {% comment %} getting the topic of the roooom {% endcomment %}
+ </div>
+ 
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

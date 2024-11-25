@@ -1,26 +1,27 @@
-from django.contrib import admin
 from django.urls import path
-from django.urls import include
-from django.contrib.auth.views import LoginView
-from . import views
+from . import views  # we have imported views from base/views.py  that is in the same directory, so we used "." to import from the same directory
 
-from Auth import views as user_views    
-urlpatterns = [
+
+############  here we have made a list of url paterns    ###############
+urlpatterns  = [
+    path('login/',views.UserLogin,name = "UserLogin"),
+    path('logout/'   ,views.UserLogout,name = "UserLogout"),
+    path('register/' , views.registerUser,name = 'register'),
+    path('', views.home, name='home'), # the path() function takes 3 arguments: 1st is the url, 2nd is the view function, 3rd is the name of the url  #  the name is optional, but it is good to use it
+    path('Update-User', views.UpdateUser, name='UpdateUser'),
+
+    path('room/<str:pk>/',views.room, name ="room"),   # 'pk' stands for Primary Key  and it is set as string.......
+    path('UserProfile/<str:pk>',views.UserProfile, name = "UserProfile"),  # url of the user profile page
+    path('create-room/',views.CreateRoom, name = "create-room"),  # url of the create room page
+    path('update-room/<str:pk>',views.UpdateRoom, name = "update-room") , # url of the update room page
+    path('delete-room/<str:pk>',views.DeleteRoom, name = "delete-room"),  # url of the deleteRoom page
+    path('join-room/<str:pk>',views.JoinRoom, name = "join-room"),  
     
-    path('', views.homepage, name='HomePage'), 
-    path('profile/', views.profile, name='profile'), 
+     path('add-bookmark/<int:room_id>/', views.add_bookmark, name='add-bookmark'),
+    path('remove-bookmark/<int:room_id>/', views.remove_bookmark, name='remove_bookmark'),
+    path('bookmarks/', views.bookmarks, name='bookmarks'),
+    # path('',views.DeleteRoom, name = "delete-room"),  # url of the deleteRoom page
+    path('delete-message/<str:pk>',views.DeleteMessage, name = "delete-message"),  # url of the deleteMessage
+    path('topics/', views.topicsPage, name="topics")
 
-
-    path('UserLogin/',user_views.UserLogin.as_view(), name = "UserLogin"),
-    path('logout/'   ,user_views.UserLogout,name = "UserLogout"),
-    path('register/' , user_views.registerUser,name = 'UserRegisteration'),
-
-   
-    path('Developers/', views.Developers, name='Developers'),  
-    path('guest/', user_views.GuestHomePage, name='GuestHomePage'),  
-    
-    path('student/', views.student_profile, name='student_profile'),
-    path('career_recommendations/<int:student_id>/', views.career_recommendations, name='career_recommendations'),
-    path('startup/', views.startup_idea, name='startup_idea'),
-    path('startup_results/<int:idea_id>/', views.startup_results, name='startup_results'),
-]
+    ]

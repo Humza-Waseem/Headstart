@@ -1,0 +1,118 @@
+ <!--   RECENT ACTIVITIES-->
+{% block content%}
+
+ <div class="activities">
+
+    <div class="activities__header"  > <!--THE HEADER OF ACTIVITIES  SECTION -->
+        <h2 style="display: flex; align-items: center; justify-content: center;" >About&nbsp; <strong>{{request.user.username}}</strong></h2>
+    </div>
+    <div> 
+        <div class="profile-info-container">
+            <div class="profile__avatar ">
+                <div class="avatar avatar--small active">
+                    <img src="{{request.user.Pfp.url}}" />
+                </div>
+            </div>
+            <div class="profile__info">
+                <p>@{{request.user.username}}</p>
+                <div class= "profile-info-headline">
+                   {% if  request.user.headline is not none%}
+                      <p>::{{request.user.headline}}</p>
+                   {% else%}
+                      <a href="{% url 'UpdateUser' %}"><p> Enter Bio/Headline</p></a>
+                   {% endif%}
+                </div>
+                
+            </div>
+       </div>
+
+        <div class="profile-details-container">
+            {% comment %} <h3 style="display: flex; align-items: center; justify-content: center; font-size: 18px;">About</h3> {% endcomment %}
+        
+            {% comment %} <hr class= "profile-details-hr"> {% endcomment %}
+
+          <div class="profile-details">
+
+            <div class= "profile-details-info">
+                <h6> {{request.user.room_set.count}}</h6>
+                
+                <span>Rooms</span>
+            </div>
+            <hr class= "profile-details-hr">
+            <div class= "profile-details-info">
+               <h6> {{request.user.date_joined|date:"F d, Y"}}</h6>
+               
+               <span>Joined</span>
+
+            </div>
+            <hr class= "profile-details-hr">
+
+            <div class= "profile-details-info">
+                <h6>{{request.user.last_login|date:"F d, Y"}}</h6>
+                
+                <span>Last Active</span>
+            </div>
+            
+          </div>
+        </div>
+
+    </div>
+    <hr class= "profile-details-hr">
+
+    <div class="social-links">
+        
+        <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-reddit"></ion-icon>
+                <ion-icon name="logo-reddit"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-discord"></ion-icon>
+                <ion-icon name="logo-discord"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+    </div>
+  
+  </div>
+  
+  
+  {% endblock content%}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
