@@ -32,7 +32,7 @@ where `url_you_just_copied` is the url to this repository (your fork of this pro
 For example:
 
 ```
-git clone https://github.com/your-username/ChatRooms_Django.git
+git clone https://github.com/your-username/Headstart.git
 ```
 
 Congratulations! you have cloned the project and you can now make your own project by following this project.
