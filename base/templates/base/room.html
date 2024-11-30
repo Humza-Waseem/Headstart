@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
+{% load static%}
 <main class="profile-page layout layout--2">
   <div class="container">
     <!-- Room Start -->
@@ -133,10 +134,26 @@
       <div class="room__message">
         <form action="" method="POST">
           {% csrf_token %}
-          <input name="body" placeholder="Write your message here..." />
+          <div class="message-container">
+            <input
+              name="body"
+              class="message-input"
+              placeholder="Write your message here..."
+            />
+            <button type="submit" class="send-button">
+              <img
+                src="{% static 'icons/send.png' %}"
+                alt="sendButton"
+                class="send-icon"
+              />
+            </button>
+          </div>
+          
+          
         </form>
       </div>
     </div>
+
     <!-- Room End -->
 
     <!--   Start -->

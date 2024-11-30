@@ -37,7 +37,10 @@
 
         <!-- THE ACTUAL MESSAGE  CONTENTS -->
         <div class="activities__boxContent">
-            <p>replied to post “<a href="{% url 'room' message.room.id %}">{{message.room}}</a>”</p>
+            <p>replied to a post in 
+                <br>
+                <span>“<a href="{% url 'room' message.room.id %}">{{message.room}}</a>”</span>
+            </p>
             <div class="activities__boxRoomContent">{{message.body}}</div>
         </div>
     </div>

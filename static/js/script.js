@@ -69,4 +69,18 @@ const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
 
 
-/////////////************ */     
+////////////////////////////    NOTIFICATIONS    ////////////////////////////
+
+function closeNotification(closeButton) {
+  const notification = closeButton.closest('.notification');
+
+  if (notification) {
+    // Add a CSS class for the fade-out effect
+    notification.classList.add('fade-out');
+
+    // Wait for the animation to finish before removing the element
+    notification.addEventListener('animationend', () => {
+      notification.remove();
+    });
+  }
+}

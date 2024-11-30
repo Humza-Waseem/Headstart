@@ -16,7 +16,8 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email' # specifying the email as the username field helps us to login using the email instead of the username, which django use username by default for the authentication of the users(login and signup)
     REQUIRED_FIELDS = []
-
+    def __str__(self):
+        return self.username
    
 # # Create your models here.
 

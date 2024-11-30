@@ -61,7 +61,10 @@ a {
   color: var(--color-main);
   text-decoration: none;
 }
+/* a:hover{
+    text-shadow: 0 0 1px , 0 0 3px #ffffff66, 0 0 6px #ffffff99; 
 
+} */
 /*========== components ==========*/
 .container {
   max-width: 120rem;
@@ -97,6 +100,17 @@ a {
 .btn--main {
   background-color: var(--color-main);
   color: var(--color-dark);
+}
+.btn--main:hover{
+  
+    color: #ffffff;
+    background: var(--color-main);
+    border: 1px solid var(--color-main);
+    /* text-shadow: 0 0 3px #ffffff33, 0 0 6px #ffffff66, 0 0 12px #ffffff99; */
+    /* box-shadow: 0 0 2px #e1f6fb33, 0 0 8px #e1f6fb50, 0 0 12px #e1f6fb70,
+      0 0 16px #e1f6fb60; */
+  
+  
 }
 
 .btn:hover {
@@ -294,12 +308,36 @@ a {
 }
 
 .header__search > label {
-  background-color: var(--color-dark-medium);
+  background-color: #2f3640;
   padding: 1.3rem 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.header__search > label:focus-within {
+  border-color: #4e81b8; /* Border color on input focus */
+  box-shadow: 0 0 5px rgba(27, 134, 249, 0.705); /* Optional shadow effect */
+}
+.header__search input::placeholder {
+  font-size: 1.4rem; /* Adjust to desired size */
+  color: #aaa; /* Optional: Change placeholder text color */
+  opacity: 1; /* Ensure full visibility of placeholder */
+}
+
+
+
+
+.header__search input {
+  border: none; /* Remove input's own border */
+  outline: none; /* Remove input's focus outline */
+  background: transparent; /* Transparent background for seamless integration */
+  color: inherit; /* Inherit text color from parent */
+  flex: 1; /* Input fills available space */
+  font-size: 1rem; /* Adjust font size as needed */
 }
 
 .header__search svg {
@@ -308,6 +346,7 @@ a {
   height: 2rem;
   margin-left: 1rem;
 }
+
 
 .header__search input {
   width: 30rem;
@@ -1126,6 +1165,72 @@ a {
 .room__message > form > input::placeholder {
   color: var(--color-light-gray);
 }
+/* Container for the input and button */
+.message-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styling for the input field */
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  WIDTH: 90%;
+    DISPLAY: FLEX;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    /* border-radius: 10%; */
+    height: 32px;
+    background: var(--color-bg);
+    position: relative;
+    top: 20%;
+    color: var(--color-light);
+}
+.message-input:active{
+  border: 4px solid var(--color-main);
+}
+
+/* Styling for the send button */
+.send-button {
+  border: none;
+  padding: 6px 15px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition: background-color 0.3s ease; */
+  background: transparent;
+  
+  /* border: 1px solid white; */
+}
+
+.send-button:hover {
+  /* border: none; */
+}
+.send-button:hover {
+  img{
+  width: 25px;
+  height: 25px;
+  transition: 0.3s ease;
+
+  }
+}
+
+/* Styling for the send icon */
+.send-icon {
+  height: 20px;
+  width: 20px;
+  background: transparent;
+}
+
 
 .participants__top span {
   color: var(--color-main);
@@ -1208,8 +1313,8 @@ a {
   background: #008cff;
   border: 1px solid #008cff;
   text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-  box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
-    0 0 100px #008cff;
+  box-shadow: 0 0 5px #008cffab, 0 0 20px #008cffab, 0 0 50px #008cffaf,
+    0 0 100px #008cffab;
 }
 
 
@@ -1270,3 +1375,122 @@ a {
 
 
 
+
+
+
+
+
+/*@ /////////////////////////     NOTIFICATION COMPONENT     ////////////////////////////  */
+.notification {
+  width: 100%;
+  max-width: 290px;
+  height: 70px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 20px;
+  left: -300px; /* Initially off-screen to the left */
+  animation: slideInLeft 0.5s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 20px;
+  }
+}
+
+.notification.fade-out {
+  animation: fadeOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.notification:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* .notification-image {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background: linear-gradient(#d3d5eb, #8089eb);
+}
+
+.notification:hover > .notification-image {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(#8089eb, #712020);
+} */
+
+.notification-image svg{
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+  /* background: linear-gradient(#d3d5eb, #8089eb); */
+}
+
+.notification-content {
+  width: calc(100% - 90px);
+  margin-left: 10px;
+  color: white;
+  font-family: 'Poppins' sans-serif;
+}
+
+.notification-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-timestamp {
+  font-size: 10px;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.notification-message {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+
+
+.notification--close {
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-light); /* Red color for the close icon */
+  margin-left: 10px;
+}
+
+.notification--close:hover {
+  color: var(--color-light);
+}
+
+.notification {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.notification.fade-out {
+  opacity: 0;
+  transform: translateY(-10px); /* Optional upward movement */
+}

@@ -13,9 +13,16 @@ from django.db.models import Q  # here we get Q because it will help us to inser
 
 
 
-def UserLogout(request):  # creating this view to so that   
-    logout(request)   # user presses the logout button then its session will be deleted from the database
-    return redirect('home')   # and the user is redirected to the home page..
+def UserLogout(request):  # creating this view to so that 
+      
+    try:
+        logout(request)
+        messages.success(request,"Successfully Logged Out")
+    
+    except Exception as e:
+        messages.error(request,"An error occured during logging out")
+    return redirect('home')
+
 
 def registerUser(request):  
     # page = 'register' 
@@ -29,7 +36,9 @@ def registerUser(request):
             user.username = user.username
             user.save()
             login(request,user)
-            return redirect('home')
+            messages.success(request,'Successfully registered')
+            
+            return redirect('UserLogin')
         else:
             messages.error(request,'An error occured during registration')
 
@@ -53,6 +62,7 @@ def UserLogin(request):
         user = authenticate(request,email =email,password= password )
         if user is not None:
             login(request,user)
+            messages.success(request,f"Successfully Logged In as {request.user.username}")
             return redirect('home')
         else:
             messages.error(request,"email or Password is incorrect")
