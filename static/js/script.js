@@ -84,3 +84,153 @@ function closeNotification(closeButton) {
     });
   }
 }
+
+
+
+
+
+///////////////////////////////////     TOPICS LOADING        /////////////////////////////////
+document.addEventListener('DOMContentLoaded', function() {
+  const loadMoreBtn = document.getElementById('load-more');
+  let currentPage = 1;  // Start at page 1
+
+  loadMoreBtn.addEventListener('click', function() {
+      // Increment the page number
+      currentPage++;
+
+      // Get the current search query
+      const searchQuery = document.querySelector('input[name="q"]').value;
+
+      // Make the AJAX request
+      fetch(`/topics/?q=${searchQuery}&page=${currentPage}`, {
+          method: 'GET',
+          headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+          // If there are more topics, append them to the list
+          if (data.topics.length > 0) {
+              const topicsList = document.querySelector('.topics__list');
+              data.topics.forEach(topic => {
+                  const li = document.createElement('li');
+                  li.innerHTML = `<a href="/home?q=${topic.name}">${topic.name} <span>${topic.count}</span></a>`;
+                  topicsList.appendChild(li);
+              });
+
+              // If there are no more topics, hide the "Load More" button
+              if (!data.has_next) {
+                  loadMoreBtn.style.display = 'none';
+              }
+          }
+      })
+      .catch(error => console.log(error));
+  });
+});
+
+
+
+//////////////////////////    ADD BOOKMARKS   ////////////////////////////
+function toggleBookmark(roomId) {
+  // Get the checkbox input element and the SVG element for the bookmark icon
+  var checkbox = document.getElementById('bookmark-toggle-' + roomId);
+  var bookmarkIcon = document.querySelector(`#bookmark-toggle-${roomId} + div .bookmark-icon`);
+  
+  // Send AJAX request to add/remove the bookmark
+  fetch(`/add-bookmark/${roomId}/`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken')  // CSRF token for security
+      },
+      body: JSON.stringify({
+          bookmarked: checkbox.checked // Send whether the checkbox is checked
+      })
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Optionally handle the response, e.g. update UI or show a message
+      alert(data.message);  // Example of showing the response message
+      checkbox.checked = data.bookmarked;  // Update the checkbox based on the response
+
+      // Toggle the 'bookmarked' class on the icon based on the response
+      if (data.bookmarked) {
+          bookmarkIcon.classList.add('bookmarked');
+      } else {
+          bookmarkIcon.classList.remove('bookmarked');
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+}
+
+// Helper function to get CSRF token from cookies (needed for POST requests in Django)
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+
+//*=////////////////////////  Message sending     ////////////////////////////
+document.addEventListener('DOMContentLoaded', () => {
+  const messageInput = document.getElementById('messageInput');
+  const sendButton = document.getElementById('sendButton');
+
+  messageInput.addEventListener('input', () => {
+    if (messageInput.value.trim() === '') {
+      sendButton.disabled = true; // Disable the button if input is empty
+    } else {
+      sendButton.disabled = false; // Enable the button if input has content
+    }
+  });
+});
+
+
+//*=//////////////////    THeme CHANGE FROM BUTTON ///////////////////////  
+document.querySelectorAll('.colorPallete button').forEach(button => {
+  button.addEventListener('click', () => {
+    // Get the background color of the child div
+    const color = button.querySelector('.colorPallete__item').style.backgroundColor;
+
+    // Apply the color to the theme
+    document.body.style.backgroundColor = color;
+    document.body.classList.add('theme'); // Optional: Add theme class for styling
+  });
+});
+
+const backgrounds = [
+  'url("..//images/1.jpg")', // Background for button 1
+  'url("../images/2.jpg")', // Background for button 2
+  'url("../images/3.jpg")', // Background for button 3
+  'url("../images/4.jpg")', // Background for button 4
+  'url("../images/5.jpg")', // Background for button 5
+  'url("../images/6.jpg")', // Background for button 6
+];
+
+document.querySelectorAll('.colorPallete button').forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const body = document.body;
+
+    // Remove any existing background styles or classes
+    body.style.backgroundColor = '';  // Clear the background color
+    body.style.backgroundImage = '';  // Clear the previous image
+
+    // Apply the new background image
+    const background = backgrounds[index];
+    body.style.backgroundImage = background;
+    body.style.backgroundSize = 'cover'; // Ensure the image covers the entire background
+    body.style.backgroundPosition = 'center'; // Center the image
+  });
+});
+

@@ -126,30 +126,35 @@ def UpdateUser(request):
     return render(request,'base/UpdateUser.html',context)
 
 
-def room(request,pk):     
-    room = Room.objects.get(id = pk) 
-    UserMessages = room.message_set.all()  # getting all the messages of the room and ordering them according to the most recent message  ( It is a "1 to many relationship" so we can use the message_set to get all the messages of the room)
-    participants = room.participants.all()  # getting all the participants of the room
+# @login_required(login_url="UserLogin") 
+def room(request, pk):     
+    room = Room.objects.get(id=pk) 
+    UserMessages = room.message_set.all()  # Getting all the messages of the room we write set because we are getting all the messages of the room for relation ( one to many)  one room can have many messages
+    participants = room.participants.all()  # Getting all the participants of the room
 
     # Form for sending the message in the room.html page
-    if(request.method == 'POST'):     # if the method in the form is POST then
-        message = Message.objects.create(    # creating the message object
-        user= request.user,                  # the user will be the user who is logged in
-        room = room,                         # the room will be the room in which the message is sent
-        body = request.POST.get('body') # the actual message is one which is entered by the user in the field which is named as 'body' in the FormField of the room.html page
-        )
-        room.participants.add(request.user)  # adding the user who has sent the message to the participants of room
+    if request.method == 'POST':  # If the method in the form is POST
+        body = request.POST.get('body')  # Get the message body from the form
+        
+        # Check if the message body is empty or contains only whitespace
+        if body and body.strip():
+            message = Message.objects.create(  # Create the message object only if valid
+                user=request.user,            # The user who is logged in
+                room=room,                    # The room in which the message is sent
+                body=body.strip()             # Use the stripped message body
+            )
+            room.participants.add(request.user)  # Add the user to the room participants
 
-        return redirect('room',pk=room.id)   # redirecting the user to the same room after sending the message.. This will refresh the page and the message will be shown in the room.html page
-    
+        return redirect('room', pk=room.id)  # Redirect to the same room after handling the form submission
+       
+    context = { 
+        'room': room,
+        'UserMessages': UserMessages,
+        'participants': participants
+    }
 
-    # for i in rooms:
-    #     if i['id'] == int(pk):
-    #         room = i
-    context = { 'room': room,'UserMessages':UserMessages,'participants':participants}
-    
+    return render(request, 'base/room.html', context)  # Render the room.html page
 
-    return render(request, 'base/room.html',context)   ## using render function to render the room.html page
   
 
 @login_required(login_url="UserLogin")     # login will be required to access this page
@@ -262,16 +267,47 @@ def bookmarks(request):
     bookmarks = Bookmark.objects.filter(user=user).select_related('room')
     return render(request, 'base/bookmarks.html', {'bookmarks': bookmarks})
     
+# @login_required
+# def add_bookmark(request, room_id):
+#     room = get_object_or_404(Room, id=room_id)
+#     user = request.user
+    
+#     # Check if the user has already bookmarked the room
+#     if not Bookmark.objects.filter(user=request.user, room=room).exists():
+#         Bookmark.objects.create(user=request.user, room=room)
+    
+#     return redirect('home')  # Redirect to the bookmarks page or room detail page
+
+
+
 @login_required
 def add_bookmark(request, room_id):
     room = get_object_or_404(Room, id=room_id)
     user = request.user
     
     # Check if the user has already bookmarked the room
-    if not Bookmark.objects.filter(user=request.user, room=room).exists():
-        Bookmark.objects.create(user=request.user, room=room)
+    if not Bookmark.objects.filter(user=user, room=room).exists():
+        Bookmark.objects.create(user=user, room=room)
+        message = 'Room bookmarked successfully!'
+        bookmarked = True
+    else:
+        # Optional: If you want to allow unbookmarking
+        Bookmark.objects.filter(user=user, room=room).delete()
+        message = 'Room removed from bookmarks.'
+        bookmarked = False
     
-    return redirect('home')  # Redirect to the bookmarks page or room detail page
+    # Check if the request is AJAX
+    if request.is_ajax():
+        return JsonResponse({
+            'message': message,
+            'bookmarked': bookmarked
+        })
+    
+    # If it's not an AJAX request, we can still redirect to the home page (or any other page)
+    return redirect('home')
+
+
+
 
 @login_required
 def remove_bookmark(request, room_id):
@@ -309,10 +345,65 @@ def DeleteMessage(request,pk):
     return render(request,'base/delete.html',context)
 
 
+# def topicsPage(request):
+#     q = request.GET.get('q') if request.GET.get('q') != None else ''
+#     topics = Topic.objects.filter(name__icontains=q)
+#     return render(request, 'base/topics.html', {'topics': topics})
+
+
+
+
+
+
+from django.core.paginator import Paginator
+from django.http import JsonResponse
+from base.models import Topic
+
 def topicsPage(request):
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
-    topics = Topic.objects.filter(name__icontains=q)
-    return render(request, 'base/topics.html', {'topics': topics})
+    q = request.GET.get('q', '')  # Filter by search query
+    topics_list = Topic.objects.filter(name__icontains=q)  # Filter topics by search query
+   
+
+    # Pagination setup (10 topics per page)
+    paginator = Paginator(topics_list, 10)
+    page_number = request.GET.get('page')  # Get the page number from the query string
+    page_obj = paginator.get_page(page_number)
+
+    # Check if the request is AJAX by inspecting the request header
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        # If this is an AJAX request, return only the list of topics
+        topics_data = [{'name': topic.name, 'count': topic.room_set.all().count()} for topic in page_obj]
+        
+        return JsonResponse({'topics': topics_data, 'has_next': page_obj.has_next()})
+
+    return render(request, 'base/topics.html', {'topics': page_obj})
+
+
+
+
+# def load_more_topics(request):
+#     # Get the last topic name passed from the frontend
+#     last_topic_name = request.GET.get('last_topic', '')
+    
+#     # Fetch the next set of topics after the last one shown
+#     topics = Topic.objects.filter(name__gt=last_topic_name).order_by('name')[:10]
+
+#     # Prepare data for response
+#     topics_data = [
+#         {
+#             'name': topic.name,
+#             'room_count': topic.room_set.count(),
+#         }
+#         for topic in topics
+#     ]
+    
+#     # Return JSON response with new topics
+#     return JsonResponse({'topics': topics_data})
+
+
+
+
+
 
 def activityPage(request):
     room_messages = Message.objects.all()

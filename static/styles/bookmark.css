@@ -113,7 +113,19 @@
     -webkit-animation-delay: var(--icon-anmt-duration);
     animation-delay: var(--icon-anmt-duration);
   }
-  
+
+/* Default unbookmarked icon style */
+.bookmark-icon {
+  fill: #cccccc;  /* Grey when not bookmarked */
+  transition: fill 0.3s ease;
+}
+
+/* Style for the bookmarked (toggled) icon (blue) */
+.bookmark-icon.bookmarked {
+  fill: #007bff;  /* Blue color for bookmarked state */
+}
+
+
   @-webkit-keyframes bookmark {
     50% {
       -webkit-transform: scaleY(0.6);

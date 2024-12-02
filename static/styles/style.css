@@ -50,7 +50,22 @@ body {
   color: var(--color-light-gray);
   background-color: var(--color-bg);
   min-height: 100vh;
+ 
+
 }
+body {
+  transition: background 0.5s ease;
+}
+body.theme {
+  transition: background-color 0.3s ease;
+}
+body.image-background {
+  background: url('../images/pattern.jpg') no-repeat center center;
+  background-size: cover;
+  transition: background 0.3s ease;
+}
+
+
 
 img {
   width: 100%;
@@ -1145,6 +1160,17 @@ a {
   right: 0;
   background: transparent;
 }
+.send-button {
+  background-color: #ccc; /* Disabled state */
+  cursor: not-allowed;
+}
+
+.send-button:enabled  {
+  background-color: var(--color-dark);
+  transition: 0.3s ease;
+  
+}
+
 
 .room__message > form > input {
   resize: none;
@@ -1493,4 +1519,39 @@ a {
 .notification.fade-out {
   opacity: 0;
   transform: translateY(-10px); /* Optional upward movement */
+}
+
+
+
+/** ////////////////////////////   COLOR PALLETTE STYLING     /////////////////////// */
+.room__middle .colorPallete{
+  display: flex;
+  flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+  
+   
+}
+.room__middle button{
+  background-color: var(--color-dark-light);
+  /* border: none; */
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+
+  
+}
+.room__middle button:hover .colorPallete__item{
+  width:22px;
+    height: 22px;
+    /* transition : all 0.3s ease; */
+}
+.room__middle .colorPallete__item{
+   
+    margin: 4px;
+    width:18px;
+    height: 18px;
+    border-radius: 10px;
+    /* border: 1px solid #ffffff; */
+
 }

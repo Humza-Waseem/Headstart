@@ -17,11 +17,12 @@ urlpatterns  = [
     path('delete-room/<str:pk>',views.DeleteRoom, name = "delete-room"),  # url of the deleteRoom page
     path('join-room/<str:pk>',views.JoinRoom, name = "join-room"),  
     
-     path('add-bookmark/<int:room_id>/', views.add_bookmark, name='add-bookmark'),
+    path('add-bookmark/<int:room_id>/', views.add_bookmark, name='add-bookmark'),
     path('remove-bookmark/<int:room_id>/', views.remove_bookmark, name='remove_bookmark'),
     path('bookmarks/', views.bookmarks, name='bookmarks'),
     # path('',views.DeleteRoom, name = "delete-room"),  # url of the deleteRoom page
     path('delete-message/<str:pk>',views.DeleteMessage, name = "delete-message"),  # url of the deleteMessage
-    path('topics/', views.topicsPage, name="topics")
+    path('topics/', views.topicsPage, name="topics"),
+    # path('topics/load_more/', views.load_more_topics, name='load_more_topics'),
 
     ]
