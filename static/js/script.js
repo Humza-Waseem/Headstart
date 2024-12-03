@@ -198,39 +198,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //*=//////////////////    THeme CHANGE FROM BUTTON ///////////////////////  
-document.querySelectorAll('.colorPallete button').forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the background color of the child div
-    const color = button.querySelector('.colorPallete__item').style.backgroundColor;
+// document.querySelectorAll('.colorPallete button').forEach(button => {
+//   button.addEventListener('click', () => {
+//     // Get the background color of the child div
+//     const color = button.querySelector('.colorPallete__item').style.backgroundColor;
 
-    // Apply the color to the theme
-    document.body.style.backgroundColor = color;
-    document.body.classList.add('theme'); // Optional: Add theme class for styling
+//     // Apply the color to the theme
+//     document.body.style.backgroundColor = color;
+//     document.body.classList.add('theme'); // Optional: Add theme class for styling
+//   });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const backgrounds = [
+    'url("../images/1.jpg")',
+    'url("../images/2.jpg")',
+    'url("../images/3.jpg")',
+    'url("../images/4.jpg")',
+    'url("../images/5.jpg")',
+    'url("../images/6.jpg")',
+  ];
+
+  document.querySelectorAll('.colorPallete button').forEach((button, index) => {
+    button.addEventListener('click', () => {
+      console.log(`Button ${index + 1} clicked`);
+
+      const body = document.body;
+
+      // Remove existing styles
+      body.style.backgroundColor = '';
+      body.style.backgroundImage = '';
+
+      // Apply new background
+      const background = backgrounds[index];
+      console.log(`Applying background: ${background}`);
+      body.style.backgroundImage = background;
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = 'center';
+    });
   });
 });
 
-const backgrounds = [
-  'url("..//images/1.jpg")', // Background for button 1
-  'url("../images/2.jpg")', // Background for button 2
-  'url("../images/3.jpg")', // Background for button 3
-  'url("../images/4.jpg")', // Background for button 4
-  'url("../images/5.jpg")', // Background for button 5
-  'url("../images/6.jpg")', // Background for button 6
-];
 
-document.querySelectorAll('.colorPallete button').forEach((button, index) => {
-  button.addEventListener('click', () => {
-    const body = document.body;
-
-    // Remove any existing background styles or classes
-    body.style.backgroundColor = '';  // Clear the background color
-    body.style.backgroundImage = '';  // Clear the previous image
-
-    // Apply the new background image
-    const background = backgrounds[index];
-    body.style.backgroundImage = background;
-    body.style.backgroundSize = 'cover'; // Ensure the image covers the entire background
-    body.style.backgroundPosition = 'center'; // Center the image
-  });
-});
 
