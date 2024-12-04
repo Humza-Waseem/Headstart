@@ -198,55 +198,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //*=//////////////////    THeme CHANGE FROM BUTTON ///////////////////////  
-document.querySelectorAll('.colorPallete button').forEach(button => {
-  button.addEventListener('click', () => {
-    // Get the background color of the child div
-    const color = button.querySelector('.colorPallete__item').style.backgroundColor;
+// document.querySelectorAll('.colorPallete button').forEach(button => {
+//   button.addEventListener('click', () => {
+//     // Get the background color of the child div
+//     const color = button.querySelector('.colorPallete__item').style.backgroundColor;
 
-    // Apply the color to the theme
-    document.body.style.backgroundColor = color;
-    document.body.classList.add('theme'); // Optional: Add theme class for styling
+//     // Apply the color to the theme
+//     document.body.style.backgroundColor = color;
+//     document.body.classList.add('theme'); // Optional: Add theme class for styling
+//   });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const backgrounds = [
+    'url("/static/images/1.jpg")',
+    'url("/static/images/2.jpg")',
+    'url("/static/images/3.jpg")',
+    'url("/static/images/4.jpg")',
+    'url("/static/images/5.jpg")',
+    'url("/static/images/6.jpg")',
+  ];
+  
+
+  document.querySelectorAll('.colorPallete button').forEach((button, index) => {
+    button.addEventListener('click', () => {
+      console.log(`Button ${index + 1} clicked`);
+
+      const body = document.body;
+
+      // Remove existing styles
+      // body.style.backgroundColor = '';
+      body.style.backgroundImage = '';
+
+      // Apply new background
+      const background = backgrounds[index];
+      console.log(`Applying background: ${background}`);
+      body.style.backgroundImage = background;
+      body.style.backgroundSize = 'cover';
+      body.style.backgroundPosition = 'center';
+    });
   });
 });
 
-const backgrounds = [
-  'url("..//images/1.jpg")', // Background for button 1
-  'url("../images/2.jpg")', // Background for button 2
-  'url("../images/3.jpg")', // Background for button 3
-  'url("../images/4.jpg")', // Background for button 4
-  'url("../images/5.jpg")', // Background for button 5
-  'url("../images/6.jpg")', // Background for button 6
-];
 
-document.querySelectorAll('.colorPallete button').forEach((button, index) => {
-  button.addEventListener('click', () => {
-    const body = document.body;
 
-    // Remove any existing background styles or classes
-    body.style.backgroundColor = '';  // Clear the background color
-    body.style.backgroundImage = '';  // Clear the previous image
 
-    // Apply the new background image
-    const background = backgrounds[index];
-    body.style.backgroundImage = background;
-    body.style.backgroundSize = 'cover'; // Ensure the image covers the entire background
-    body.style.backgroundPosition = 'center'; // Center the image
-  });
+
+//#?//////////////////// Light and dark mode  //////////////////
+// Select the switch input element
+const themeSwitch = document.querySelector('.switch input');
+
+// Add event listener to detect state changes
+themeSwitch.addEventListener('change', () => {
+    // Toggle the `data-theme` attribute on the HTML element
+    if (themeSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark'); // Apply dark theme
+    } else {
+        document.documentElement.setAttribute('data-theme', ''); // Apply light theme
+    }
 });
 
+// Check and persist the user's preference using localStorage
+const userPreference = localStorage.getItem('theme');
+if (userPreference === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeSwitch.checked = true; // Set the switch to checked for dark mode
+}
 
-
-// Light and dark mode
-const themeToggle = document.getElementById('theme-toggle');
-// Load saved theme from localStorage
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-themeToggle.textContent = currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-
-// Toggle theme on button click
-themeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeToggle.textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+themeSwitch.addEventListener('change', () => {  // Update the user's preference when the switch is toggled
+    if (themeSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); // Save user preference
+    } else {
+        document.documentElement.setAttribute('data-theme', '');
+        localStorage.setItem('theme', 'light'); // Save user preference
+    }
 });
+

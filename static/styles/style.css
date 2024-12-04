@@ -396,8 +396,19 @@ a {
 .header__menu {
   margin-left: auto;
   position: relative;
+  display: flex;
+  /* gap: 2rem; */
+  flex-direction: row;
 }
-
+.ThemeToggler{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-left: 20px;
+  
+}
 .header__menu a {
   display: flex;
   gap: 1.5rem;
@@ -959,6 +970,7 @@ a {
   border-radius: 0.7rem;
   overflow: hidden;
   position: relative;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 900px) {
