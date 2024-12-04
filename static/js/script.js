@@ -211,13 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const backgrounds = [
-    'url("../images/1.jpg")',
-    'url("../images/2.jpg")',
-    'url("../images/3.jpg")',
-    'url("../images/4.jpg")',
-    'url("../images/5.jpg")',
-    'url("../images/6.jpg")',
+    'url("/static/images/1.jpg")',
+    'url("/static/images/2.jpg")',
+    'url("/static/images/3.jpg")',
+    'url("/static/images/4.jpg")',
+    'url("/static/images/5.jpg")',
+    'url("/static/images/6.jpg")',
   ];
+  
 
   document.querySelectorAll('.colorPallete button').forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const body = document.body;
 
       // Remove existing styles
-      body.style.backgroundColor = '';
+      // body.style.backgroundColor = '';
       body.style.backgroundImage = '';
 
       // Apply new background
@@ -243,17 +244,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Light and dark mode
-const themeToggle = document.getElementById('theme-toggle');
-// Load saved theme from localStorage
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-themeToggle.textContent = currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+//#?//////////////////// Light and dark mode  //////////////////
+// Select the switch input element
+const themeSwitch = document.querySelector('.switch input');
 
-// Toggle theme on button click
-themeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeToggle.textContent = newTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+// Add event listener to detect state changes
+themeSwitch.addEventListener('change', () => {
+    // Toggle the `data-theme` attribute on the HTML element
+    if (themeSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark'); // Apply dark theme
+    } else {
+        document.documentElement.setAttribute('data-theme', ''); // Apply light theme
+    }
 });
+
+// Check and persist the user's preference using localStorage
+const userPreference = localStorage.getItem('theme');
+if (userPreference === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeSwitch.checked = true; // Set the switch to checked for dark mode
+}
+
+themeSwitch.addEventListener('change', () => {
+    if (themeSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark'); // Save user preference
+    } else {
+        document.documentElement.setAttribute('data-theme', '');
+        localStorage.setItem('theme', 'light'); // Save user preference
+    }
+});
+

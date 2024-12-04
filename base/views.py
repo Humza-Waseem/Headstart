@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Room,Topic,Message,User,Bookmark   # importing the Room and Topic and Message models from models which is in the same directory
 from django.contrib import messages  # importing the flash messages 
 
-from .forms import RoomForm , UserForm, MyUserCreationForm  # importing the RoomForm  and UserFOrm from the Forms.py file which is in the same directory
+from .Forms import RoomForm , UserForm, MyUserCreationForm  # importing the RoomForm  and UserFOrm from the Forms.py file which is in the same directory
 from django.contrib.auth import authenticate,login,logout  
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
