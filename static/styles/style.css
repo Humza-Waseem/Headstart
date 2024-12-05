@@ -986,11 +986,14 @@ a {
 .room__top,
 .participants__top {
   background: var(--color-dark-light);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: relative;
+    display: flex
+;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    padding: 1rem 2rem;
+    position: relative;
+    flex-direction: row;
+    /* justify-content: center; */
 }
 
 .room__top svg,
@@ -1005,6 +1008,10 @@ a {
   display: flex;
   align-items: flex-end;
   gap: 1rem;
+  margin: auto;
+  position: relative;
+  right: 120px;
+  /* border: 1px solid black; */
 }
 
 .room__topLeft h3,
@@ -1022,7 +1029,10 @@ a {
 
 .room__topRight {
   display: flex;
-  column-gap: 1em;
+    column-gap: 1em;
+    width: 50px;
+    margin: auto;
+    /* border: 1px solid black; */
 }
 
 .room__topRight svg {
@@ -1176,7 +1186,15 @@ a {
   background-color: #ccc; /* Disabled state */
   cursor: not-allowed;
 }
-
+.AttachFile-btn{
+  background-color: #ccc; /* Disabled state */
+  cursor: not-allowed;
+}
+.attach-icon {
+  height: 20px;
+  width: 20px;
+  background: transparent;
+}
 .send-button:enabled  {
   background-color: var(--color-dark);
   transition: 0.3s ease;
@@ -1248,6 +1266,17 @@ a {
   background: transparent;
   
   /* border: 1px solid white; */
+}
+.AttachFile-btn{
+  border: none;
+  padding: 6px 15px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition: background-color 0.3s ease; */
+  background: transparent;
 }
 
 .send-button:hover {
@@ -1535,14 +1564,25 @@ a {
 
 
 
+
 /** ////////////////////////////   COLOR PALLETTE STYLING     /////////////////////// */
 .room__middle .colorPallete{
   display: flex;
-  flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      /* width: 18px; */
+      /* height: 18px; */
   
    
+}
+.room__middle{
+  width:180px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 .room__middle button{
   background-color: var(--color-dark-light);
@@ -1550,20 +1590,17 @@ a {
   cursor: pointer;
   border-radius: 10px;
   border: none;
-
-  
 }
 .room__middle button:hover .colorPallete__item{
-  width:22px;
-    height: 22px;
+  width:18px;
+    height: 18px;
     /* transition : all 0.3s ease; */
 }
 .room__middle .colorPallete__item{
    
-    margin: 4px;
-    width:18px;
-    height: 18px;
-    border-radius: 10px;
-    /* border: 1px solid #ffffff; */
-
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
 }
+

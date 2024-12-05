@@ -130,6 +130,7 @@ def UpdateUser(request):
 def room(request, pk):     
     room = Room.objects.get(id=pk) 
     UserMessages = room.message_set.all()  # Getting all the messages of the room we write set because we are getting all the messages of the room for relation ( one to many)  one room can have many messages
+    UserMessagesCount = UserMessages.count()  # getting the count of the messages
     participants = room.participants.all()  # Getting all the participants of the room
 
     # Form for sending the message in the room.html page
@@ -150,7 +151,8 @@ def room(request, pk):
     context = { 
         'room': room,
         'UserMessages': UserMessages,
-        'participants': participants
+        'participants': participants,
+        'UserMessagesCount': UserMessagesCount,
     }
 
     return render(request, 'base/room.html', context)  # Render the room.html page

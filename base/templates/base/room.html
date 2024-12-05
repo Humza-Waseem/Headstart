@@ -66,7 +66,7 @@
       <div class="room__box scroll">
         <div class="room__header scroll">
           <div class="room__info">
-            <h3>{{room.name}}</h3>
+            <h3>{{room.name}}</h3> 
             
             {% if request.user in room.participants.all  or  request.user != room.host %}
             {% comment %} {% if request.user == room.host%} {% endcomment %}
@@ -88,8 +88,17 @@
           
             {% comment %} {% endif %} {% endcomment %}
             {% endif %}
+            <div class="room__details">
+            
+             <div>
+              <span>{{room.created|timesince}} ago</span>
+             </div>
 
-            <span>{{room.created|timesince}} ago</span>
+             <div>
+              <span> {{UserMessagesCount}} chats</span>
+             </div>
+          
+          </div>
           </div>
           {% if request.user.is_authenticated%}
           <div class="room__hosted">
@@ -208,24 +217,15 @@
         <form action="" method="POST">
           {% csrf_token %}
           <div class="message-container">
-            <input
-              name="body"
-              id="messageInput"
-              class="message-input"
-              placeholder="Write your message here..."
-            />
-            <button
-              type="submit"
-              class="send-button"
-              id="sendButton"
-              disabled
-            >
-              <img
-                src="{% static 'icons/send.png' %}"
-                alt="sendButton"
-                class="send-icon"
-              />
+            <input  name="body" id="messageInput" class="message-input" placeholder="Write yor message ..."/>
+            <button type="submit" class="AttachFile-btn" >
+              <img src="{% static 'icons/attach.png' %}" alt="AttachFile" class="attach-icon" />
             </button>
+            <button type="submit" class="send-button" id="sendButton" disabled >
+              <img src="{% static 'icons/send.png' %}" alt="sendButton" class="send-icon" />
+            </button>
+          
+
           </div>
         </form>
       </div>
