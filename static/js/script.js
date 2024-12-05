@@ -265,7 +265,7 @@ if (userPreference === 'dark') {
     themeSwitch.checked = true; // Set the switch to checked for dark mode
 }
 
-themeSwitch.addEventListener('change', () => {
+themeSwitch.addEventListener('change', () => {  // Update the user's preference when the switch is toggled
     if (themeSwitch.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark'); // Save user preference
