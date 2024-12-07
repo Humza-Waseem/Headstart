@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Room,Topic,Message,User,Bookmark   # importing the Room and Topic and Message models from models which is in the same directory
 from django.contrib import messages  # importing the flash messages 
 
-from .forms import RoomForm , UserForm, MyUserCreationForm  # importing the RoomForm  and UserFOrm from the Forms.py file which is in the same directory
+from .Forms import RoomForm , UserForm, MyUserCreationForm  # importing the RoomForm  and UserFOrm from the Forms.py file which is in the same directory
 from django.contrib.auth import authenticate,login,logout  
 # from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -77,26 +77,46 @@ def UserLogin(request):
 # ]
 
 
+from django.views.generic import TemplateView
 
-def home(request):
-    
-    q = request.GET.get('q') if( request.GET.get('q') != None) else ''  # getting the query from the search bar and if it is not there then set it to empty string
+from django.shortcuts import render
+from django.db.models import Q
 
-   
-    # rooms = Room.objects.filter(topic__name__icontains=q) # this will only allow us to search for the topic name
+def homepage(request):
+    participants = User.objects.filter(id__in=Room.objects.values_list('participants', flat=True).distinct())
 
-    rooms = Room.objects.filter(    
-        Q(topic__name__icontains=q) | # filter if the q is in the topic name OR Name of room OR in the Description(q will be entered by user through SearchBar)
-        Q(name__icontains =q)  |
-        Q(description__icontains =q))   
-     # if we do not give anything in the search bar then it will show all the rooms and the  filter will not be applied
+    if request.user.is_authenticated:
+        # Logged-in user logic
+        q = request.GET.get('q') if request.GET.get('q') else ''
+        rooms = Room.objects.filter(
+            Q(topic__name__icontains=q) | 
+            Q(name__icontains=q) | 
+            Q(description__icontains=q)
+        )
+        topics = Topic.objects.all()
+        UserMessages = Message.objects.filter(Q(room__topic__name__icontains=q))
+        room_count = rooms.count()
+        context = {
+            'rooms': rooms,
+            'topics': topics,
+            'UserMessages': UserMessages,
+            'room_count': room_count,
+            'participants': participants,
+        }
+        return render(request, 'base/home.html', context)
+    else:
+        # Guest user logic
+        context = {
+            "participants": participants,
+            "rooms": Room.objects.all(),
+            "topics": Topic.objects.all(),
+            "UserMessages": Message.objects.all(),
+            "room_count": Room.objects.count(),
+        }
+        return render(request, 'base/homepageBeforeLogin.html', context)
 
-    topics = Topic.objects.all()
-    UserMessages = Message.objects.filter(  Q(room__topic__name__icontains = q))  # filtering the messages according to the topic name
-    room_count = rooms.count()  # getting the count of the rooms
-    context = { 'rooms': rooms,'topics':topics,'UserMessages':UserMessages,"room_count": room_count}
 
-    return render(request, 'base/home.html', context    )   #  we passed the rooms named dictionary to the home.html page ..  The first 'rooms' is the variable name that we will use in the html page and the second 'rooms' is the dictionary name that we created above(the dictionary that we are passing on by render function to the home.html page)
+
 
 @login_required(login_url="UserLogin") 
 def UserProfile(request,pk):

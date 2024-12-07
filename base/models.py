@@ -40,6 +40,7 @@ class Room(models.Model):
     updated = models.DateTimeField(auto_now=True)  # auto_now will update the time whenever the room is updated
     created = models.DateTimeField(auto_now_add=True)  # auto_now_add will update the time only when the room is created for the first time
     
+    
 
     def __str__(self):
         return self.name

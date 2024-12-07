@@ -275,3 +275,48 @@ themeSwitch.addEventListener('change', () => {  // Update the user's preference 
     }
 });
 
+
+
+function sendMessage(event) {
+  event.preventDefault();  // Prevent form submission
+
+  // Get the send button and add the 'loading' class to show the spinner
+  const sendButton = document.querySelector('.send-button');
+  sendButton.classList.add('loading');
+
+  // Simulate message sending process
+  setTimeout(function() {
+    sendButton.classList.remove('loading'); // Remove the loading spinner
+    document.querySelector('.room__message form').submit(); // Submit the form after the animation
+  }, 2000); // Simulate a 2-second sending delay (adjust as needed)
+}
+
+// Check if Enter is pressed
+function checkEnter(event) {
+  if (event.key === 'Enter') {
+    sendMessage(event);
+  }
+}
+
+// Add event listener to the send button for regular click
+document.querySelector('.send-button').addEventListener('click', sendMessage);
+
+// Add event listener to the input field to handle 'Enter' key press
+document.querySelector('.message-input').addEventListener('keydown', checkEnter);
+
+
+
+
+//@@//////////////////////    FAQ    ////////////////////////
+function toggleAnswer(index) {
+  const answer = document.getElementById(`answer-${index}`);
+  const sign = document.querySelectorAll(".toggle-sign")[index];
+
+  if (answer.classList.contains("show")) {
+      answer.classList.remove("show");
+      sign.textContent = "+";
+  } else {
+      answer.classList.add("show");
+      sign.textContent = "-";
+  }
+}

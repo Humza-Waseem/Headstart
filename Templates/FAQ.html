@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <link rel="stylesheet" type='text/css' media= 'screen' href="{% static 'css/style.css'%}">
+    <script src={% static 'js/script.js'%}></script>
+
+</head>
+<body>
+
+    {% comment %} <div class="section-subtitle">Clear your Doubts</div>
+    <div class="h2 section-title ">Frequently Asked Questions</div> {% endcomment %}
+
+    <div class= "container ">
+      <p class="section-subtitle ">Insights</p>
+
+      <div class="title-wrapper">
+        <h2 class="h2 section-title">Frequently Asked Questions</h2>
+
+        {% comment %} <a href="#" class="btn-link">
+          <span>h</span>
+
+          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+        </a> {% endcomment %}
+      </div>
+    
+
+
+      <div class="">
+        <!-- Left Image Section -->
+        {% comment %} <div class="faq-image">
+            <img src="{% static 'images/faqImage.png'%}" alt="FAQ Image">
+        </div> {% endcomment %}
+
+        <!-- Right Questions Section -->
+        <div class="faq-questions">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(0)">
+                    <span>What resources are available for new startups?</span>
+                    <span class="toggle-sign">+</span>
+                </div>
+                <div class="faq-answer" id="answer-0">
+                    Our platform provides business planning tools, mentor access, and resources to help guide your startup journey.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(1)">
+                    <span>How can I find investors for my startup?</span>
+                    <span class="toggle-sign">+</span>
+                </div>
+                <div class="faq-answer" id="answer-1">
+                    We offer investor matching tools and links to crowdfunding platforms to help secure funding for your business.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(2)">
+                    <span>How do I create a business plan?</span>
+                    <span class="toggle-sign">
+                        +
+                        <!-- <img src="{static 'icons/expandIcon'}" alt=""> -->
+                    </span>
+                </div>
+                <div class="faq-answer" id="answer-2">
+                    We provide business model canvas templates, revenue projection tools, and expert guidance for building your plan.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(3)">
+                    <span>Can I get a mentor to guide my startup?</span>
+                    <span class="toggle-sign">+</span>
+                </div>
+                <div class="faq-answer" id="answer-3">
+                    Yes, you can connect with experienced mentors in various industries through our platform.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(4)">
+                    <span>What support do you offer for team building?</span>
+                    <span class="toggle-sign">+</span>
+                </div>
+                <div class="faq-answer" id="answer-4">
+                    We offer a talent marketplace where you can find co-founders, team members, and freelancers to join your startup.
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+ 
+       
+
+</body>
+</html>

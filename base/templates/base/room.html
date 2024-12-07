@@ -32,30 +32,13 @@
         {% if room.host == request.user %}
         <div class="room__topRight">
           <a href="{% url 'update-room' room.id %}">
-            <svg enable-background="new 0 0 24 24" height="32" viewBox="0 0 24 24" width="32"
-              xmlns="http://www.w3.org/2000/svg">
-              <title>edit</title>
-              <g>
-                <path d="m23.5 22h-15c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h15c.276 0 .5.224.5.5s-.224.5-.5.5z" />
-              </g>
-              <g>
-                <g>
-                  <path
-                    d="m2.5 22c-.131 0-.259-.052-.354-.146-.123-.123-.173-.3-.133-.468l1.09-4.625c.021-.09.067-.173.133-.239l14.143-14.143c.565-.566 1.554-.566 2.121 0l2.121 2.121c.283.283.439.66.439 1.061s-.156.778-.439 1.061l-14.142 14.141c-.065.066-.148.112-.239.133l-4.625 1.09c-.038.01-.077.014-.115.014zm1.544-4.873-.872 3.7 3.7-.872 14.042-14.041c.095-.095.146-.22.146-.354 0-.133-.052-.259-.146-.354l-2.121-2.121c-.19-.189-.518-.189-.707 0zm3.081 3.283h.01z" />
-                </g>
-                <g>
-                  <path
-                    d="m17.889 10.146c-.128 0-.256-.049-.354-.146l-3.535-3.536c-.195-.195-.195-.512 0-.707s.512-.195.707 0l3.536 3.536c.195.195.195.512 0 .707-.098.098-.226.146-.354.146z" />
-                </g>
-              </g>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+              <path d="M18.4,4.4l1.2,1.2L6.2,19H5v-1.2L18.4,4.4 M18.4,2c-0.3,0-0.5,0.1-0.7,0.3L3,17v4h4L21.7,6.3c0.4-0.4,0.4-1,0-1.4l-2.6-2.6 C18.9,2.1,18.7,2,18.4,2L18.4,2z"></path><path d="M15.8 4.3H17.8V9.2H15.8z" transform="rotate(-45.001 16.75 6.75)"></path>
             </svg>
           </a>
           <a href="{% url 'delete-room' room.id %}">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-              <title>Remove</title>
-              <path
-                d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z">
-              </path>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+              <path d="M 10 2 L 9 3 L 3 3 L 3 5 L 4.109375 5 L 5.8925781 20.255859 L 5.8925781 20.263672 C 6.023602 21.250335 6.8803207 22 7.875 22 L 16.123047 22 C 17.117726 22 17.974445 21.250322 18.105469 20.263672 L 18.107422 20.255859 L 19.890625 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 6.125 5 L 17.875 5 L 16.123047 20 L 7.875 20 L 6.125 5 z"></path>
             </svg>
           </a>
         </div>
@@ -132,11 +115,8 @@
                 {% if request.user == UserMessage.user %}
                 <a href="{% url 'delete-message' UserMessage.id %}">
                   <div class="thread__delete">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                      <title>remove</title>
-                      <path
-                        d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z">
-                      </path>
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                      <path d="M 10 2 L 9 3 L 3 3 L 3 5 L 4.109375 5 L 5.8925781 20.255859 L 5.8925781 20.263672 C 6.023602 21.250335 6.8803207 22 7.875 22 L 16.123047 22 C 17.117726 22 17.974445 21.250322 18.105469 20.263672 L 18.107422 20.255859 L 19.890625 5 L 21 5 L 21 3 L 15 3 L 14 2 L 10 2 z M 6.125 5 L 17.875 5 L 16.123047 20 L 7.875 20 L 6.125 5 z"></path>
                     </svg>
                   </div>
                 </a>
@@ -155,29 +135,14 @@
         <form action="" method="POST">
           {% csrf_token %}
           <div class="message-container">
-<<<<<<< HEAD
-            <input  name="body" id="messageInput" class="message-input" placeholder="Write yor message ..."/>
-            <button type="submit" class="AttachFile-btn" >
-              <img src="{% static 'icons/attach.png' %}" alt="AttachFile" class="attach-icon" />
-=======
-            <input
-              name="body"
-              class="message-input"
-              placeholder="Write your message here..."
-            />
-            <button type="submit" class="send-button">
-              <img
-                src="{% static 'icons/send.png' %}"
-                alt="sendButton"
-                class="send-icon"
-              />
->>>>>>> 0dbe1ff8a703871b6d76f5984daeae8d1b10086f
+            <input name="body" class="message-input" placeholder="Write your message here..." />
+
+            <button type="submit" class="AttachFile-btn">
+              <img src="{% static 'icons/attach.png' %}" alt="attachIcon" class="attach-icon" />
             </button>
-            <button type="submit" class="send-button" id="sendButton" disabled >
+            <button type="submit" class="send-button" id="sendButton"  >
               <img src="{% static 'icons/send.png' %}" alt="sendButton" class="send-icon" />
             </button>
-          
-
           </div>
           
           
@@ -208,111 +173,9 @@
     <!--  End -->
   </div>
 </main>
-<style>
-  /* Spinner styles for send button */
-.send-button {
-  position: relative;
-  display: inline-block;
-  /* background-color: #007bff; */
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
 
-.send-button:hover {
-  background-color: #0056b3;
-}
 
-.send-button.loading {
-  pointer-events: none;
-}
 
-.send-button.loading .send-icon {
-  display: none;
-}
 
-.send-button.loading:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border: 3px solid transparent;
-  border-top: 3px solid #fff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.send-icon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-}
-
-/* Styling for input and message container */
-.message-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.message-input {
-  width: 85%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
-}
-
-.message-input:focus {
-  border-color: #007bff;
-}
-
-</style>
-<script>
-  // Function to trigger the spinner when the message is sent
-function sendMessage(event) {
-  event.preventDefault();  // Prevent form submission
-
-  // Get the send button and add the 'loading' class to show the spinner
-  const sendButton = document.querySelector('.send-button');
-  sendButton.classList.add('loading');
-
-  // Simulate message sending process
-  setTimeout(function() {
-    sendButton.classList.remove('loading'); // Remove the loading spinner
-    document.querySelector('.room__message form').submit(); // Submit the form after the animation
-  }, 2000); // Simulate a 2-second sending delay (adjust as needed)
-}
-
-// Check if Enter is pressed
-function checkEnter(event) {
-  if (event.key === 'Enter') {
-    sendMessage(event);
-  }
-}
-
-// Add event listener to the send button for regular click
-document.querySelector('.send-button').addEventListener('click', sendMessage);
-
-// Add event listener to the input field to handle 'Enter' key press
-document.querySelector('.message-input').addEventListener('keydown', checkEnter);
-
-</script>
-<script src="script.js"></script>
 {% endblock content %}

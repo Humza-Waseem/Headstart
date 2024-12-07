@@ -1,5 +1,11 @@
 from django.urls import path
 from . import views  # we have imported views from base/views.py  that is in the same directory, so we used "." to import from the same directory
+# import class based views
+# from .views import homepageBeforeLogin
+from django.conf import settings
+from django.conf.urls.static import static
+# from .views import homepageBeforeLogin
+
 
 
 ############  here we have made a list of url paterns    ###############
@@ -7,8 +13,14 @@ urlpatterns  = [
     path('login/',views.UserLogin,name = "UserLogin"),
     path('logout/'   ,views.UserLogout,name = "UserLogout"),
     path('register/' , views.registerUser,name = 'register'),
-    path('', views.home, name='home'), # the path() function takes 3 arguments: 1st is the url, 2nd is the view function, 3rd is the name of the url  #  the name is optional, but it is good to use it
+    
+    # path('', views.homepageBeforeLogin, name='homepageBeforeLogin'),
+    # the path() function takes 3 arguments: 1st is the url, 2nd is the view function, 3rd is the name of the url  #  the name is optional, but it is good to use it
+    # path('', homepageBeforeLogin.as_view(), name='homepageBeforeLogin'),
+    # path('home', views.home, name='home'),
+    path('', views.homepage,name = 'home'),
     path('Update-User', views.UpdateUser, name='UpdateUser'),
+    
 
     path('room/<str:pk>/',views.room, name ="room"),   # 'pk' stands for Primary Key  and it is set as string.......
     path('UserProfile/<str:pk>',views.UserProfile, name = "UserProfile"),  # url of the user profile page
