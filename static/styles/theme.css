@@ -1,5 +1,4 @@
-/* 
-:root {
+/* :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --header-bg-color: #f0f0f0;
@@ -7,11 +6,11 @@
     --button-text-color: #ffffff;
 }
 
-[data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --header-bg-color: #1f1f1f;
-    --button-bg-color: #444444;
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-bg-color: #f0f0f0;
+    --button-bg-color: #007bff;
     --button-text-color: #ffffff;
 }
 
@@ -21,17 +20,40 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
+} */
 
 header {
     background-color: var(--header-bg-color);
-   
+    padding: 1rem;
+    text-align: center;
 }
 
 main {
     padding: 2rem;
 }
-*/
+
+button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Light Mode Toggle Styles */
+.slider {
+    background-color: #f4f4f5;
+}
+
+.slider:before {
+    background: linear-gradient(40deg, #ff8c00, #ff0080);
+}
+
 .switch {
     display: inline-block;
     position: relative;
@@ -78,3 +100,5 @@ input:checked + .slider:before {
     background: #303136;
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
 } 
+
+

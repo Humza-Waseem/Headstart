@@ -6,12 +6,14 @@
     <title>Theme Toggle Example</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/theme.css' %}">
-    <script src="{% static 'js/script.js' %}"></script>
 </head>
 <body>
     <label class="switch">
-        <input type="checkbox">
+        <input type="checkbox" id="themeToggle">
         <span class="slider"></span>
-    </label>
+      </label>
+      
+      <script src="{% static 'js/script.js' %}"></script>
 </body>
+      
 </html>

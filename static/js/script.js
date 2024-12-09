@@ -244,39 +244,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-//#?//////////////////// Light and dark mode  //////////////////
-// Select the switch input element
-const themeSwitch = document.querySelector('.switch input');
+////////////////////// ?Light and dark mode  //////////////////
+// Select the toggle button and body element
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
 
-// Add event listener to detect state changes
-themeSwitch.addEventListener('change', () => {
-    // Toggle the `data-theme` attribute on the HTML element
-    if (themeSwitch.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark'); // Apply dark theme
-    } else {
-        document.documentElement.setAttribute('data-theme', ''); // Apply light theme
-    }
-});
-
-// Check and persist the user's preference using localStorage
-const userPreference = localStorage.getItem('theme');
-if (userPreference === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    themeSwitch.checked = true; // Set the switch to checked for dark mode
+// Check localStorage for saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-theme');
+  themeToggle.checked = true;
 }
 
-themeSwitch.addEventListener('change', () => {  // Update the user's preference when the switch is toggled
-    if (themeSwitch.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark'); // Save user preference
-    } else {
-        document.documentElement.setAttribute('data-theme', '');
-        localStorage.setItem('theme', 'light'); // Save user preference
-    }
+// Add event listener to toggle button
+themeToggle.addEventListener('change', () => {
+  if (themeToggle.checked) {
+    body.classList.add('dark-theme');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.remove('dark-theme');
+    localStorage.setItem('theme', 'light');
+  }
 });
 
 
 
+////////////////////// ?SENDING MESSAGE //////////////////
 function sendMessage(event) {
   event.preventDefault();  // Prevent form submission
 

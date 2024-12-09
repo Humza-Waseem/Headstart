@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-:root {
+/* :root {
   --color-main: #71c6dd;
   --color-main-light: #e1f6fb;
   --color-dark: #3f4156;
@@ -13,6 +13,110 @@
   --color-success: #5dd693;
   --color-error: #fc4b0b;
 }
+[data-theme="light"] {
+ 
+    --color-main: #0077cc;  
+    --color-main-light: #cce7ff; 
+    --color-dark: #eaeaea; 
+    --color-dark-medium: #d4d4d4; /
+    --color-dark-light: #c0c0c0; 
+    --color-light: #2d2d39; 
+    --color-gray: #707070;
+    --color-light-gray: #a0a0a0; 
+    --color-bg: #ffffff;
+    --color-success: #28a745; 
+    --color-error: #dc3545; 
+}
+
+body[data-theme="light"] {
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+} */
+ /* Default light theme styling */
+:root {
+  --color-main: #35a3c1;
+  --color-main-light: #cce7ff;
+  --color-dark: #eaeaea;
+  --color-dark-medium: #d4d4d4;
+  --color-dark-light: #cccccc;
+  --color-light: #2d2d39;
+  --color-gray: #707070;
+  --color-light-gray: #a0a0a0;
+  --color-bg: #ffffff;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+}
+
+body {
+  /* background-color: var(--color-bg); */
+  color: var(--color-light);
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--color-dark-light);
+}
+
+/* Toggle switch styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d4d4d4;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  top: 50%;
+  left: 0.3em;
+  transform: translateY(-50%);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - 1.7em);
+  background: #303136;
+}
+
+/* Dark theme styles */
+body.dark-theme {
+  --color-main: #71c6dd;
+  --color-main-light: #e1f6fb;
+  --color-dark: #3f4156;
+  --color-dark-medium: #51546e;
+  --color-dark-light: #696d97;
+  --color-light: #e5e5e5;
+  --color-gray: #8b8b8b;
+  --color-light-gray: #b2bdbd;
+  --color-bg: #2d2d39;
+  --color-success: #5dd693;
+  --color-error: #fc4b0b;
+}
+
 
 /*========== base styles ==========*/
 
@@ -49,6 +153,7 @@ body {
   font-size: 1.5rem;
   color: var(--color-light-gray);
   background-color: var(--color-bg);
+  background-color: var(--color-dark-medium);
   min-height: 100vh;
  
 
@@ -323,7 +428,7 @@ a {
 }
 
 .header__search > label {
-  background-color: #2f3640;
+  background-color: var(--color-dark-medium);
   padding: 1.3rem 1rem;
   display: flex;
   align-items: center;
