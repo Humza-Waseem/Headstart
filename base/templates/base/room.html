@@ -50,7 +50,8 @@
           <div class="room__info">
             <h3>{{room.name}}</h3> 
             
-            {% if request.user in room.participants.all  or  request.user != room.host %}
+            {% if request.user in room.participants.all  and  request.user != room.host %}
+
             {% comment %} {% if request.user == room.host%} {% endcomment %}
             <a href="{% url 'add-bookmark' room.id %}">
               <div class="room__bookmark">

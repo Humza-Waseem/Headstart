@@ -1832,3 +1832,131 @@ a {
     opacity: 1;
  }
  
+
+
+/** //////////////////////////////////     SCroll to Top    ////////////////////////////////// */
+
+/* Button is hidden initially */
+#scrollToTop {
+  display: none; /* Initially hidden */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100; /* Ensures it appears above other content */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position:fixed;
+  bottom:20px;
+  /* color: var(--color-main); */
+  /* transition:  0.3s ease-in; */
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill:  var(--color-light);
+}
+
+/* Button hover effect */
+#scrollToTop:hover {
+  width: 140px;
+  border-radius: 50px;
+  background-color: var(--color-dark-medium);
+  transition-duration: 0.3s;
+}
+
+#scrollToTop:hover .svgIcon {
+  transform: translateY(-200%);
+}
+
+#scrollToTop::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Back to Top";
+  color: var(--color-main);
+  font-size: 0px;
+}
+
+#scrollToTop:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  transition-duration: 0.3s;
+}
+
+
+
+
+
+/** //////////////////////////////////     PRELOADER    ////////////////////////////////// */
+.preloader{
+
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* background-color: var(--secondary-dark); */
+  background-color: #d7d7d7;
+  z-index: 999999999;
+  opacity: 1; /* Make preloader initially fully visible */
+  transition: opacity 0.5s ease-in-out;
+
+}
+.preloader.hidden {
+  /* opacity: 0; Preloader after fade-out */
+  visibility: hidden;
+  display: none;
+}
+
+
+.loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.loader div {
+  position: absolute;
+  border: 4px solid #5c61ff;
+  border-radius: 50%;
+  animation: loader8435 1s ease-out infinite;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes loader8435 {
+  0% {
+    top: 32px;
+    left: 32px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+  }
+}
