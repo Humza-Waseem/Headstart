@@ -85,7 +85,7 @@ from django.db.models import Q
 def homepage(request):
     participants = User.objects.filter(id__in=Room.objects.values_list('participants', flat=True).distinct())
 
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
         # Logged-in user logic
         q = request.GET.get('q') if request.GET.get('q') else ''
         rooms = Room.objects.filter(
@@ -104,16 +104,16 @@ def homepage(request):
             'participants': participants,
         }
         return render(request, 'base/home.html', context)
-    else:
-        # Guest user logic
-        context = {
-            "participants": participants,
-            "rooms": Room.objects.all(),
-            "topics": Topic.objects.all(),
-            "UserMessages": Message.objects.all(),
-            "room_count": Room.objects.count(),
-        }
-        return render(request, 'base/homepageBeforeLogin.html', context)
+    # else:
+    #     # Guest user logic
+    #     context = {
+    #         "participants": participants,
+    #         "rooms": Room.objects.all(),
+    #         "topics": Topic.objects.all(),
+    #         "UserMessages": Message.objects.all(),
+    #         "room_count": Room.objects.count(),
+    #     }
+    #     return render(request, 'base/homepageBeforeLogin.html', context)
 
 
 
