@@ -366,9 +366,9 @@ a {
   font-size: 1.4rem;
 }
 
-.dropdown-menu a:hover {
+/* .dropdown-menu a:hover {
   background-color: var(--color-dark-medium);
-}
+} */
 
 .dropdown-menu > a:not(:last-child) {
   border-bottom: 1px solid var(--color-dark-medium);
@@ -1091,14 +1091,15 @@ a {
 .room__top,
 .participants__top {
   background: var(--color-dark-light);
-    display: flex
-;
-    /* justify-content: space-evenly; */
-    align-items: center;
-    padding: 1rem 2rem;
-    position: relative;
-    flex-direction: row;
-    /* justify-content: center; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  padding: 1rem 2rem;
+  /* position: relative; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  justify-content: space-between;
+  width: 100%;
 }
 
 .room__top svg,
@@ -1110,13 +1111,14 @@ a {
 }
 
 .room__topLeft {
-  display: flex;
+  /* display: flex;
   align-items: flex-end;
   gap: 1rem;
   margin: auto;
   position: relative;
-  right: 120px;
+  right: 120px; */
   /* border: 1px solid black; */
+  text-align: left;
 }
 
 .room__topLeft h3,
@@ -1136,8 +1138,7 @@ a {
   display: flex;
     column-gap: 1em;
     width: 50px;
-    margin: auto;
-    /* border: 1px solid black; */
+    text-align: right;
 }
 
 .room__topRight svg {
@@ -1693,6 +1694,9 @@ a {
   opacity: 0;
   transform: translateY(-10px); /* Optional upward movement */
 }
+.notification {
+  left: -300px; /* Initially hidden */
+}
 
 
 
@@ -1709,12 +1713,14 @@ a {
    
 }
 .room__middle{
-  width:180px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
+  width: 150px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+   
 }
 .room__middle button{
   background-color: var(--color-dark-light);
@@ -1727,6 +1733,7 @@ a {
   width:18px;
     height: 18px;
     /* transition : all 0.3s ease; */
+    background-color: transparent;
 }
 .room__middle .colorPallete__item{
    
@@ -1960,3 +1967,13 @@ a {
     opacity: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+

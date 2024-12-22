@@ -86,6 +86,32 @@ function closeNotification(closeButton) {
 }
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const notifications = document.querySelectorAll('.notification');
+
+//   // Delay showing the notifications by 2 seconds
+//   setTimeout(() => {
+//     notifications.forEach((notification) => {
+//       notification.style.left = '20px'; // Trigger the slide-in animation
+//     });
+//   }, 800); //  seconds delay
+
+//   // Add fade-out functionality to close buttons
+//   const closeButtons = document.querySelectorAll('.notification--close');
+//   closeButtons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//       const notification = button.closest('.notification');
+//       if (notification) {
+//         notification.classList.add('fade-out');
+//         notification.addEventListener('animationend', () => {
+//           notification.remove();
+//         });
+//       }
+//     });
+//   });
+// });
+
+
 
 
 

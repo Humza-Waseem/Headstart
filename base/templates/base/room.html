@@ -138,9 +138,9 @@
           <div class="message-container">
             <input name="body" class="message-input" placeholder="Write your message here..." />
 
-            <button type="submit" class="AttachFile-btn">
+            {% comment %} <button class="AttachFile-btn">
               <img src="{% static 'icons/attach.png' %}" alt="attachIcon" class="attach-icon" />
-            </button>
+            </button> {% endcomment %}
             <button type="submit" class="send-button" id="sendButton"  >
               <img src="{% static 'icons/send.png' %}" alt="sendButton" class="send-icon" />
             </button>

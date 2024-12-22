@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+# import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,11 +28,13 @@ SECRET_KEY = "django-insecure-2wie=v%m^0d1sow64afesa+d=t&s-%lv&5epti9mj4cs3e9g*v
 DEBUG = True
 
 ALLOWED_HOSTS = []
-    
+
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',  # this is used to serve the static files in the production server
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # this is used to serve the static files in the production server
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -89,6 +93,27 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER ': 'postgres',
+#         'PASSWORD': 'password',
+#         'HOST': 'containers-us-west-196.railway.app',
+#         'PORT': '6625',
+        
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'your_database_name',
+#         'USER': 'your_database_user',
+#         'PASSWORD': 'your_database_password',
+#         'HOST': 'localhost',  # or your database server
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -126,11 +151,12 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 MEDIA_URL = '/images/media/'
 
-STATICFILES_DIRS=  [
-    BASE_DIR /  'static'
-]
+# STATICFILES_DIRS=  [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT =   BASE_DIR / 'static/images/media/'  
       # this is for the media that a user uploads... A user can upload a dp or any picture in chat and all pics will go to this directory

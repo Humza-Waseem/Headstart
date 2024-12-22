@@ -2,18 +2,18 @@
 {% load static%}
 {% include 'main.html' %}
 {% if messages %}
-{% for message in messages %}
-  <div class="notification">
-  <div class="notification-image"></div>
-  <div class="notification-content">
-    <div class="notification-text">
-      <p class="notification-title">{{ message.tags }}</p>
-      <span class="notification-timestamp">current Time </span>
-      <span class="notification--close">X</span>
+  {% for message in messages %}
+    <div class="notification" style="left: -300px;">
+      <div class="notification-image"></div>
+      <div class="notification-content">
+        <div class="notification-text">
+          <p class="notification-title">{{ message.tags }}</p>
+          <span class="notification-timestamp">Current Time</span>
+          <span class="notification--close">X</span>
+        </div>
+        <p class="notification-message">{{ message }}</p>
+      </div>
     </div>
-    <p class="notification-message">{{message}}</p>
-  </div>
- </div>
-{% endfor %}
+  {% endfor %}
 {% endif %}
 
