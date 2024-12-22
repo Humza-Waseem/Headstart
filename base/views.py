@@ -83,7 +83,7 @@ from django.shortcuts import render
 from django.db.models import Q
 
 def homepage(request):
-    participants = User.objects.filter(id__in=Room.objects.values_list('participants', flat=True).distinct())
+        participants = User.objects.filter(id__in=Room.objects.values_list('participants', flat=True).distinct())
 
     # if request.user.is_authenticated:
         # Logged-in user logic
